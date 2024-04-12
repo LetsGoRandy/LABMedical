@@ -1,0 +1,9 @@
+@import "../../src/styles/variables.scss";
+
+body {
+    font: {
+      family: $body-font-family;
+      size: $body-font-size;
+    }
+    color: $body-color;
+  }
