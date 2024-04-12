@@ -1,13 +1,10 @@
 {
-  "usuarios": [
+  "users": [
     {
+      "id": 1,
+      "name": "Carlos",
       "email": "carlos@teste.com",
-      "senha": "123"
-    },
-    {
-      "id": "f996",
-      "Email": "carlos@teste.com",
-      "Senha": "123"
-    }
+      "password": "123"
+    }    
   ]
 }

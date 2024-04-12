@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+// Color
+$gray: #999999;
+$dark-gray: #455154;
+$blue: #0E45B7;
+
+$primary-color: $blue;
+$border-color: #dddddd;
+
+// Font
+$primary-font: "Figtree", sans-serif;
+
+// Typography
+$body-font-family: $primary-font;
+$body-font-size: 14px;
+$body-color: $dark-gray;
+
+// Input
+$input-height: 40px;
+
+// Button
+$button-height: $input-height;

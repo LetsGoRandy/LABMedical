@@ -1,0 +1,75 @@
+<!--  
+View the step by step video tutorial on how to create this login form with only css(sass) and html
+
+https://youtu.be/dok2xAaheWk
+-->
+
+<div class="wrapper">
+    <div class="container">
+        <div class="img-content">
+            <img src="../../../assets/PNG/LABMedical.svg" alt="">
+        </div>        
+        <div class="tabs">
+            <!-- Login -->
+            <input type="radio" class="tabs__button" name="signForm" id="signIn" checked />
+            <label class="tabs__text" for="signIn">Login</label>
+            <div class="tabs__content">                
+                <h1>Olá</h1>
+                <p>Entre com seus dados!</p>
+                <form class="form">
+                    <div class="input-group">
+                        <input 
+                        class="input-group__input"
+                        type="email"                        
+                        placeholder="&nbsp;"
+                        name="Email" 
+                        id="email" 
+                        autocomplete="off" 
+                        required 
+                        />
+                        <label class="input-group__label" for="username">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <input 
+                        class="input-group__input" 
+                        type="password"                        
+                         name="Senha"
+                         placeholder="&nbsp;" 
+                         id="password" 
+                         required 
+                         />
+                        <label class="input-group__label" for="password">Senha</label>
+                    </div>
+                  
+                    <div class="flex-space-between">                        
+                        <p><a href="#">Esqueceu a senha?</a></p>
+                    </div>
+                    <button type="button">Entrar</button>
+                </form>
+            </div>
+
+            <!-- Cadastro -->
+            <input type="radio" class="tabs__button" name="signForm" id="signUp" />
+            <label class="tabs__text" for="signUp">Cadastro</label>
+            <div class="tabs__content">
+                <h1>Novo Usuário</h1>
+                <p>Faça seu cadastro para começar!</p>
+                <form class="form">
+                    <div class="input-group">
+                        <input class="input-group__input" type="text" placeholder="&nbsp;" name="username" id="username" autocomplete="off" required />
+                        <label class="input-group__label" for="email">Nome</label>
+                    </div>
+                    <div class="input-group">
+                        <input class="input-group__input" type="email" placeholder="&nbsp;" name="email" id="email" autocomplete="off" required />
+                        <label class="input-group__label" for="email">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <input class="input-group__input" type="password" name="password" placeholder="&nbsp;" id="password" required />
+                        <label class="input-group__label" for="password">Senha</label>
+                    </div>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
