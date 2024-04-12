@@ -16,17 +16,17 @@ https://youtu.be/dok2xAaheWk
             <div class="tabs__content">                
                 <h1>Olá</h1>
                 <p>Entre com seus dados!</p>
-                <form class="form">
+                <form class="form" [formGroup]="loginForm">
                     <div class="input-group">
                         <input 
                         class="input-group__input"
                         type="email"
-                        [(ngModel)]="loginObj.Email"                        
+                        formControlName="Email"                     
                         placeholder="&nbsp;"
                         name="Email" 
                         id="email" 
-                        autocomplete="off" 
-                        required 
+                        autocomplete="off"
+                        required
                         />
                         <label class="input-group__label" for="username">Email</label>
                     </div>
@@ -35,10 +35,10 @@ https://youtu.be/dok2xAaheWk
                         class="input-group__input" 
                         type="password"                        
                          name="password"
-                         [(ngModel)]="loginObj.password"
+                         formControlName="password"
                          placeholder="&nbsp;" 
-                         id="password" 
-                         required 
+                         id="password"
+                         required
                          />
                         <label class="input-group__label" for="password">Senha</label>
                     </div>

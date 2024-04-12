@@ -1,24 +1,25 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
 
-  loginObj: Login;
-
-  constructor(private http: HttpClient){
-    this.loginObj = new Login();
-  }
+  loginForm = this.fb.group({
+    email: ['', Validators.required, Validators.email],
+    password: ['', Validators.required, Validators.minLength(6)]
+  })
+  
+  constructor(private fb:FormBuilder){ }
 
   // Função Login Usuário
   submitLogin(){ 
@@ -26,16 +27,6 @@ export class LoginComponent {
   }
 }
 
-export class Login{
-  Email: string;
-  password: string;
-
-  constructor(){
-    this.Email = "";
-    this.password = "";
-  }
-
-}
 
 
 // this.http.post('http://localhost:3000/usuarios', this.loginObj).subscribe((res:any)=>{
