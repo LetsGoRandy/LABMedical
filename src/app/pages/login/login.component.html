@@ -20,7 +20,8 @@ https://youtu.be/dok2xAaheWk
                     <div class="input-group">
                         <input 
                         class="input-group__input"
-                        type="email"                        
+                        type="email"
+                        [(ngModel)]="loginObj.Email"                        
                         placeholder="&nbsp;"
                         name="Email" 
                         id="email" 
@@ -33,7 +34,8 @@ https://youtu.be/dok2xAaheWk
                         <input 
                         class="input-group__input" 
                         type="password"                        
-                         name="Senha"
+                         name="password"
+                         [(ngModel)]="loginObj.password"
                          placeholder="&nbsp;" 
                          id="password" 
                          required 
@@ -44,7 +46,7 @@ https://youtu.be/dok2xAaheWk
                     <div class="flex-space-between">                        
                         <p><a href="#">Esqueceu a senha?</a></p>
                     </div>
-                    <button type="button">Entrar</button>
+                    <button type="button" (click)="submitLogin()">Entrar</button>
                 </form>
             </div>
 
