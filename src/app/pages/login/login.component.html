@@ -1,0 +1,75 @@
+<div class="wrapper">
+    <div class="container">
+        <div class="img-content">
+            <img src="/assets/LABMedical.svg" alt="">
+        </div>        
+        <div class="tabs">
+            <!-- Login -->
+            <input type="radio" class="tabs__button" name="signForm" id="signIn" checked />
+            <label class="tabs__text" for="signIn">Login</label>
+            <div class="tabs__content">                
+                <h1>Olá</h1>
+                <p>Entre com seus dados!</p>
+                <form class="form" [formGroup]="loginForm">
+                    <div class="input-group">
+                        <input 
+                        class="input-group__input"
+                        type="email"
+                        formControlName="emailLogin"                     
+                        placeholder="&nbsp;"
+                        name="EmailLogin" 
+                        id="EmailLogin" 
+                        autocomplete="off"
+                        required
+                        />
+                        <label class="input-group__label" for="username">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <input 
+                        class="input-group__input" 
+                        type="password"                        
+                         name="passwordLogin"
+                         formControlName="passwordLogin"
+                         placeholder="&nbsp;" 
+                         id="passwordLogin"
+                         required
+                         />
+                        <label class="input-group__label" for="password">Senha</label>
+                    </div>
+                  
+                    <div class="flex-space-between">                        
+                        <p><a (click)="resetPassword()" >Esqueceu a senha?</a></p>
+                    </div>
+                    <button type="button" (click)="submitLogin()" >Entrar</button>
+                </form>
+            </div>
+
+            <!-- Cadastro -->
+            <input type="radio" class="tabs__button" name="signForm" id="signUp" />
+            <label class="tabs__text" for="signUp">Cadastro</label>
+            <div class="tabs__content">
+                <h1>Novo Usuário</h1>
+                <p>Faça seu cadastro para começar!</p>
+                <form class="form" [formGroup]="registerForm">
+                    <div class="input-group">
+                        <input class="input-group__input" type="text" placeholder="&nbsp;" name="userNameRegister" formControlName="userNameRegister" id="userNameRegister" autocomplete="off" required />
+                        <label class="input-group__label" for="userNameRegister">Nome</label>
+                    </div>
+                    <div class="input-group">
+                        <input class="input-group__input" type="email" placeholder="&nbsp;" name="emailRegister" formControlName="emailRegister" id="emailRegister" autocomplete="off" required />
+                        <label class="input-group__label" for="emailRegister">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <input class="input-group__input" type="password" name="passwordRegister" formControlName="passwordRegister" placeholder="&nbsp;" id="passwordRegister" required />
+                        <label class="input-group__label" for="passwordRegister">Senha</label>
+                    </div>
+                    <div class="input-group">
+                        <input class="input-group__input" type="password" name="confirmPasswordRegister" formControlName="confirmPasswordRegister" placeholder="&nbsp;" id="confirmPasswordRegister" required />
+                        <label class="input-group__label" for="confirmPasswordRegister">Conirmar Senha</label>
+                    </div>
+                    <button type="submit" (click)="submitRegister()">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
