@@ -1,13 +1,7 @@
-<!--  
-View the step by step video tutorial on how to create this login form with only css(sass) and html
-
-https://youtu.be/dok2xAaheWk
--->
-
 <div class="wrapper">
     <div class="container">
         <div class="img-content">
-            <img src="../../../assets/PNG/LABMedical.svg" alt="">
+            <img src="/assets/LABMedical.svg" alt="">
         </div>        
         <div class="tabs">
             <!-- Login -->
@@ -21,10 +15,10 @@ https://youtu.be/dok2xAaheWk
                         <input 
                         class="input-group__input"
                         type="email"
-                        formControlName="Email"                     
+                        formControlName="emailLogin"                     
                         placeholder="&nbsp;"
-                        name="Email" 
-                        id="email" 
+                        name="EmailLogin" 
+                        id="EmailLogin" 
                         autocomplete="off"
                         required
                         />
@@ -34,19 +28,19 @@ https://youtu.be/dok2xAaheWk
                         <input 
                         class="input-group__input" 
                         type="password"                        
-                         name="password"
-                         formControlName="password"
+                         name="passwordLogin"
+                         formControlName="passwordLogin"
                          placeholder="&nbsp;" 
-                         id="password"
+                         id="passwordLogin"
                          required
                          />
                         <label class="input-group__label" for="password">Senha</label>
                     </div>
                   
                     <div class="flex-space-between">                        
-                        <p><a href="#">Esqueceu a senha?</a></p>
+                        <p><a (click)="resetPassword()" >Esqueceu a senha?</a></p>
                     </div>
-                    <button type="button" (click)="submitLogin()">Entrar</button>
+                    <button type="button" (click)="submitLogin()" >Entrar</button>
                 </form>
             </div>
 
@@ -56,20 +50,24 @@ https://youtu.be/dok2xAaheWk
             <div class="tabs__content">
                 <h1>Novo Usuário</h1>
                 <p>Faça seu cadastro para começar!</p>
-                <form class="form">
+                <form class="form" [formGroup]="registerForm">
                     <div class="input-group">
-                        <input class="input-group__input" type="text" placeholder="&nbsp;" name="username" id="username" autocomplete="off" required />
-                        <label class="input-group__label" for="email">Nome</label>
+                        <input class="input-group__input" type="text" placeholder="&nbsp;" name="userNameRegister" formControlName="userNameRegister" id="userNameRegister" autocomplete="off" required />
+                        <label class="input-group__label" for="userNameRegister">Nome</label>
                     </div>
                     <div class="input-group">
-                        <input class="input-group__input" type="email" placeholder="&nbsp;" name="email" id="email" autocomplete="off" required />
-                        <label class="input-group__label" for="email">Email</label>
+                        <input class="input-group__input" type="email" placeholder="&nbsp;" name="emailRegister" formControlName="emailRegister" id="emailRegister" autocomplete="off" required />
+                        <label class="input-group__label" for="emailRegister">Email</label>
                     </div>
                     <div class="input-group">
-                        <input class="input-group__input" type="password" name="password" placeholder="&nbsp;" id="password" required />
-                        <label class="input-group__label" for="password">Senha</label>
+                        <input class="input-group__input" type="password" name="passwordRegister" formControlName="passwordRegister" placeholder="&nbsp;" id="passwordRegister" required />
+                        <label class="input-group__label" for="passwordRegister">Senha</label>
                     </div>
-                    <button type="submit">Cadastrar</button>
+                    <div class="input-group">
+                        <input class="input-group__input" type="password" name="confirmPasswordRegister" formControlName="confirmPasswordRegister" placeholder="&nbsp;" id="confirmPasswordRegister" required />
+                        <label class="input-group__label" for="confirmPasswordRegister">Conirmar Senha</label>
+                    </div>
+                    <button type="submit" (click)="submitRegister()">Cadastrar</button>
                 </form>
             </div>
         </div>
