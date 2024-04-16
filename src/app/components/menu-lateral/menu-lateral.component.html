@@ -1,22 +1,37 @@
 <nav class="sidemenu">
-    <ul>
-        <li>
-            <img src="../../assets/LABMedical.svg" width="150px">
-        </li>
-    </ul>
-    <ul>
-        <li routerLink="/home" >
-            <mat-icon> home</mat-icon>
-            Início
-        </li>
-        <li routerLink="/prontuarios" ><mat-icon> description</mat-icon>Prontuários</li>
-    </ul>
-        <ul>
-        <li routerLink="/novo-paciente"><mat-icon>person_add_alt_1</mat-icon> Novo Paciente</li>
-        <li routerLink="/nova-consulta"><mat-icon>note_add</mat-icon> Novo consulta</li>        
-        <li routerLink="/novo-exame"><mat-icon>medical_information</mat-icon> Novo Exame</li>
-    </ul>
-    <ul>
-        <li routerLink="/login" class="logout" ><mat-icon>logout</mat-icon>Sair</li>
-    </ul>
+  <ul>
+    <li>
+      <img src="../../assets/LABMedical.svg" width="150px" />
+    </li>
+  </ul>
+  <ul>
+    <li (click)="backToHome()">
+      <mat-icon> home</mat-icon>
+      Início
+    </li>
+    <li (click)="goToMedicalCharts()">
+      <mat-icon>description</mat-icon>
+      Prontuários
+    </li>
+  </ul>
+  <ul>
+    <li (click)="newPatient()">
+      <mat-icon>person_add_alt_1</mat-icon>
+      Novo Paciente
+    </li>
+    <li (click)="newMedicalAppointment()">
+      <mat-icon>note_add</mat-icon>
+      Novo consulta
+    </li>
+    <li (click)="newMedicalExamination()">
+      <mat-icon>medical_information</mat-icon>
+      Novo Exame
+    </li>
+  </ul>
+  <ul>
+    <li class="logout" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Sair
+    </li>
+  </ul>
 </nav>
