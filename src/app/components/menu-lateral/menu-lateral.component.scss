@@ -1,0 +1,48 @@
+@import "../../../styles/variables.scss";
+
+.sidemenu{
+    width: 300px;
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+    background-color: $secondary-bg-color;   
+    box-shadow: 4px 0px 10px 4px #0a0a0a30;
+    margin-right: 20px;
+
+    ul{
+        padding: 0;
+        height: 40vh;
+
+        li{
+            padding: 14px 30px;
+            list-style: none;
+            color: $dark-gray-color;
+
+            display: flex;
+            align-items: center;
+            justify-content: left;
+                      
+            &:hover{
+                background-color: $secondary-color;
+                color: $white-color;
+                transition: ease-in-out 0.3s;
+                cursor: pointer;
+            }
+
+            mat-icon{
+                margin-right: 14px;
+                font-size: 22px;
+            }
+        }
+        
+        .logout{
+            position: absolute;
+            bottom: 0;
+            width: 300px;
+            border-radius: 0;
+        }
+    }
+}
