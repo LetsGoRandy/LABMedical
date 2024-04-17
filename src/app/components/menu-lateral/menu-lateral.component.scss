@@ -1,7 +1,6 @@
 @import "../../../styles/variables.scss";
 
 .sidemenu{
-    width: 300px;
     height: 100vh;
     min-height: 100vh;
     display: flex;
@@ -10,7 +9,6 @@
     justify-content: space-between;
     background-color: $secondary-bg-color;   
     box-shadow: 4px 0px 10px 4px #0a0a0a30;
-    margin-right: 20px;
 
     ul{
         padding: 0;
@@ -36,13 +34,6 @@
                 margin-right: 14px;
                 font-size: 22px;
             }
-        }
-        
-        .logout{
-            position: absolute;
-            bottom: 0;
-            width: 300px;
-            border-radius: 0;
         }
     }
 }

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { MenuLateralComponent } from '../../components/menu-lateral/menu-lateral.component';
+// Angular Material
 import {MatIconModule} from '@angular/material/icon';
+// Components
+import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
+import { MenuLateralComponent } from '../../components/menu-lateral/menu-lateral.component';
 
 
 @Component({
@@ -8,7 +11,8 @@ import {MatIconModule} from '@angular/material/icon';
   standalone: true,
   imports: [
     MenuLateralComponent,
-    MatIconModule    
+    ToolbarComponent,
+    MatIconModule,    
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
