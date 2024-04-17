@@ -1,17 +1,19 @@
-<section class="col-auto align-center">
+<section class="col-auto align-self-center">
   <div class="container-fluid">
     <div class="row">
-      <div class="col col-md-3">
-        <p>home/Dashboard</p>
+      <div class="pages col align-self-center text-start">
+        <p>/Dashboard</p>
       </div>
-      <div class="col col-md-9">
+      <div class="col col-md-9 align-itens-center">
         <div class="container-perfil">
-            <img src="/assets/img-doctor.jpg" width="150px">
-            <h5>João Gomes</h5>
-            <h4>Médico Ortopedista</h4>
-            <li><mat-icon>location_on</mat-icon>Florianópolis - SC</li>
+          <img src="/assets/img-doctor.jpg" class="img-perfil" />
+          <div class="info-perfil">
+            <h4> {{userName}} </h4>
+            <h5> {{userEspecialization}} </h5>
+            <span><a target="_blank" href="#"><mat-icon>location_on</mat-icon> {{userLocation}} </a></span>
+          </div>
         </div>
-      </div>     
+      </div>
     </div>
   </div>
 </section>

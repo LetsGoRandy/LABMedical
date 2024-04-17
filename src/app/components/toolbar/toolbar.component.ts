@@ -13,4 +13,9 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ToolbarComponent {
 
+  userName: string = 'João Gomes';
+  userEspecialization: string = 'Ortopedista';
+  userLocation: string = 'Florianópolis - SC';
+
+
 }
