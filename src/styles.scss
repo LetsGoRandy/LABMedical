@@ -40,4 +40,4 @@ $LABMedical-theme: mat.define-light-theme((
 @import "../src/styles/variables.scss";
 html, body { height: 100%; }
 body { margin: 0; padding: 0; box-sizing: border-box; font-family: $primary-font; background-color: $primary-bg-color; }
-h1,h2,h3,p{ color: $dark-gray-color; }
+h1,h2,h3,h4,h5,p{ color: $dark-gray-color; }

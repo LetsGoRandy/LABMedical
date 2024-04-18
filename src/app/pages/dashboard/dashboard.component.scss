@@ -1,0 +1,77 @@
+@import "../../../styles/variables.scss";
+
+.title {
+  h1 {
+    font-size: 25px;
+    font-weight: bold;
+  }
+}
+
+.card-info {
+  .card-welcome {
+    height: 100%;
+    background-color: $primary-color;
+    border-radius: 10px;
+    padding: 20px 0px 0px 20px;
+
+    h2,
+    p {
+      color: #d4e3f0;
+      padding: 10px;
+    }
+    span {
+      color: $white-color;
+      font-weight: 600;
+    }
+
+    .welcome-img {
+    //   height: 100%;
+
+      img {
+        width: 60%;
+      }
+    }
+  }
+
+  .card-group {
+    background-color: #71ddb130;
+    border-radius: 10px;
+    padding: 20px 0px 0px 20px;
+    box-shadow: 0px 0px 3px 1px #0a0a0a20;
+    padding: 0 !important;
+
+    .card-item {
+      .card-icon {
+        background-color: $secondary-bg-color;
+        border-radius: 50%;
+        object-fit: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            margin: 7px;
+
+        }
+      }
+      .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        padding-top: 15px;
+
+        text-align: center;
+        color: $primary-color;
+      }
+      .card-number {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        color: $gray-color;
+      }
+    }
+  }
+}
+
+.card-list-item{
+        margin: 0 auto;
+        align-content: center;
+}
