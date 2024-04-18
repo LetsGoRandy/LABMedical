@@ -19,4 +19,7 @@ import { MenuLateralComponent } from '../../components/menu-lateral/menu-lateral
 })
 export class DashboardComponent {
 
+  titlePage: string = 'Informarções e Estatísticas'
+  userName: string = 'João Gomes'
+
 }

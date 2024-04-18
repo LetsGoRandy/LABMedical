@@ -1,17 +1,182 @@
 <div class="container.container-fluidwidth: 100% .container-md">
   <div class="row g-0">
-    <app-menu-lateral class="col col-lg-2"></app-menu-lateral>
+    <app-menu-lateral class="col col-md-2"></app-menu-lateral>
     <div class="content-dashboard col">
+      <!-- Toolbar -->
       <app-toolbar class="col-12"></app-toolbar>
+      <!-- Content page -->
       <div class="container-fluid">
-        <div class="row">
-          <div class="card-welcome m-3">
-            <p>works</p>
+        <div class="row m-3">
+          <!-- title page -->
+          <div class="title">
+            <h1>{{ titlePage }}</h1>
+          </div>
+          <!-- cards page -->
+          <div class="container-fluid card-info">
+            <div class="row">
+              <!-- CARD BEM VINDO -->
+              <div class="col-12 col-lg-7">
+                <div class="card-welcome">
+                  <div class="card-body row h-100">
+                    <div class="welcome-text col-12 col-md-5 mt-3">
+                      <h2>
+                        Olá Dr, <span>{{ userName }}</span
+                        >!
+                      </h2>
+                      <p>Tenha um ótimo dia e não se esqueça de tomar água!</p>
+                    </div>
+                    <div class="welcome-img col-12 col-md-7">
+                      <img
+                        src="/assets/img-Drink-water.svg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARDS ESTATÍSTICAS -->
+              <div class="col-12 col-lg-5">
+                <div class="card card-group">
+                  <div class="card-body">
+                    <div class="row">
+                      <!-- card pacientes -->
+                    <div class="card card-item col-12 col-lg-4">
+                      <div class="card-body">
+                        <div class="row justify-content-center">
+                          <div class="col-6">
+                            <div class="card-icon">
+                              <img src="/assets/icon-patients.svg" />
+                            </div>
+                          </div>
+                          <div class="card-text col-12 ">
+                            <h5 class="card-title">Pacientes</h5>
+                            <p class="card-number">20</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- card consultas -->
+                    <div class="card card-item col-12 col-lg-4">
+                      <div class="card-body">
+                        <div class="row justify-content-center">
+                          <div class="col-6">
+                            <div class="card-icon">
+                              <img src="/assets/icon-appointments.svg" />
+                            </div>
+                          </div>
+                          <div class="card-text col-12">
+                            <h5 class="card-title">Consultas</h5>
+                            <p class="card-number">15</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- card exames -->
+                    <div class="card card-item col-12 col-lg-4">
+                      <div class="card-body">
+                        <div class="row justify-content-center">
+                          <div class="col-6">
+                            <div class="card-icon">
+                              <img src="/assets/icon-examination.svg" />
+                            </div>
+                          </div>
+                          <div class="card-text col-12">
+                            <h5 class="card-title">Exames</h5>
+                            <p class="card-number">20</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CARD Informações rápidas -->
+              <div class="col mt-3">
+                <div class="card card-group">
+                  <div class="card-body">
+                    <h4 class="subtitle">Informações rápidas de pacientes</h4>
+                    <hr class="hr" />
+
+                    <div class="card card-list-item">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-1"><mat-icon>account_circle</mat-icon></div>
+                          <div class="col-1"><p class="text-p">1</p></div>
+                          <div class="col"><p class="text-p">Randy Gomes</p></div>
+                          <div class="col"><p class="text-p">33 anos</p></div>
+                          <div class="col"><p class="text-p">(48) 99836-0770</p></div>
+                          <div class="col"><p class="text-p">Unimed</p></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card card-list-item">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-1"><mat-icon>account_circle</mat-icon></div>
+                          <div class="col-1"><p class="text-p">1</p></div>
+                          <div class="col"><p class="text-p">Randy Gomes</p></div>
+                          <div class="col"><p class="text-p">33 anos</p></div>
+                          <div class="col"><p class="text-p">(48) 99836-0770</p></div>
+                          <div class="col"><p class="text-p">Unimed</p></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card card-list-item">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-1"><mat-icon>account_circle</mat-icon></div>
+                          <div class="col-1"><p class="text-p">1</p></div>
+                          <div class="col"><p class="text-p">Randy Gomes</p></div>
+                          <div class="col"><p class="text-p">33 anos</p></div>
+                          <div class="col"><p class="text-p">(48) 99836-0770</p></div>
+                          <div class="col"><p class="text-p">Unimed</p></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card card-list-item">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-1"><mat-icon>account_circle</mat-icon></div>
+                          <div class="col-1"><p class="text-p">1</p></div>
+                          <div class="col"><p class="text-p">Randy Gomes</p></div>
+                          <div class="col"><p class="text-p">33 anos</p></div>
+                          <div class="col"><p class="text-p">(48) 99836-0770</p></div>
+                          <div class="col"><p class="text-p">Unimed</p></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card card-list-item">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-1"><mat-icon>account_circle</mat-icon></div>
+                          <div class="col-1"><p class="text-p">1</p></div>
+                          <div class="col"><p class="text-p">Randy Gomes</p></div>
+                          <div class="col"><p class="text-p">33 anos</p></div>
+                          <div class="col"><p class="text-p">(48) 99836-0770</p></div>
+                          <div class="col"><p class="text-p">Unimed</p></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card card-list-item">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-12 col-md-1"><mat-icon>account_circle</mat-icon></div>
+                          <div class="col-12 col-md-1"><p class="text-p">1</p></div>
+                          <div class="col-12 col-md"><p class="text-p">Randy Gomes</p></div>
+                          <div class="col-12 col-md"><p class="text-p">33 anos</p></div>
+                          <div class="col-12 col-md"><p class="text-p">(48) 99836-0770</p></div>
+                          <div class="col-12 col-md"><p class="text-p">Unimed</p></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
-  
 </div>
