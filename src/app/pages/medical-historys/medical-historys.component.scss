@@ -1,0 +1,50 @@
+@import "../../../styles/variables.scss";
+
+.title{
+    font-size: 25px;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+    color: $dark-gray-color;
+}
+
+.subtitle{
+    font-size: 16px;
+    font-weight: 300;
+    padding: 2px 0px 14px 0px;
+    margin: 0;
+    color: $gray-color;
+}
+
+.no-data{
+    padding: 8px 14px;
+    font-weight: 400;
+    font-size: 14px;
+    color: $dark-gray-color;
+}
+
+tr{ height: 40px;}
+
+.th-table{
+    font-size: 14px;
+    font-weight: 500;
+    color: $primary-color;
+}
+
+.th-table{
+    font-size: 12px;
+    font-weight: 400;
+    color: $gray-color;
+}
+
+.icon-table{
+    color: $dark-gray-color;
+    margin-right: 10px;
+    transform: rotate(0deg);
+    transition: 0.3s linear all;
+    &:hover{
+       cursor: pointer;
+       color: $secondary-color;
+       transform: rotate(359deg);
+    }
+}
