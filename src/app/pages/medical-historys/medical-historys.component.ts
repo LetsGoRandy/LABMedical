@@ -1,55 +1,76 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { MenuLateralComponent } from '../../components/menu-lateral/menu-lateral.component';
 import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
-
-import {MatButtonModule} from '@angular/material/button';
-import {MatTableModule} from '@angular/material/table';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import {MatIconModule} from '@angular/material/icon';
 import { PatientsService } from '../../services/patients.service';
+import { Patient } from '../../interfaces/patient';
+
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-medical-historys',
   standalone: true,
   imports: [
+    HttpClientModule,
+    // Components
     MenuLateralComponent,
     ToolbarComponent,
+    // Angular Material
+    MatIconModule,
     MatButtonModule,
     MatTableModule,
     MatInputModule,
     MatFormFieldModule,
-    MatPaginator,
     MatPaginatorModule,
-    MatSort,
+    MatPaginator,
     MatSortModule,
-    MatIconModule,
+    MatSort,
   ],
   templateUrl: './medical-historys.component.html',
   styleUrl: './medical-historys.component.scss'
 })
 export class MedicalHistorysComponent {
-  
-  displayedColumns: string[] = ['id', 'name', 'age', 'phone', 'healthPlan', 'actions'];
-  dataSource: any;
 
-  constructor(private patientsService: PatientsService){}
+  displayedColumns: string[] = ['id', 'fullName', 'dateOfBirth', 'phoneNumber', 'healthPlanName', 'actions'];
+  dataSource: MatTableDataSource<any>;
+  listPatients: Patient[] = [];
 
-  ngOnInit(){
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(private patientsService: PatientsService) { 
+    this.dataSource = new MatTableDataSource<any>(this.listPatients)
+  }
+
+  ngOnInit() {
     this.getListPatients();
   }
 
-  getListPatients(){
-    // this.patientsService.getAllpatients().subscribe({
-    //   next: (response: any) => {
-    //     console.log('Lista de pacientes JSON-SERVER', response);
-    //   },
-    //   error: (err: any) => {
-    //     console.error(err);
-    //   }
-    // })
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  getListPatients() {
+    this.patientsService.getAllpatients()
+      .subscribe({
+        next: (response: any) => {
+          this.listPatients = response;
+          this.dataSource = new MatTableDataSource<any>(this.listPatients);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        },
+        error: (err: any) => {
+          console.error(err);
+        }
+      })
   }
 
   applyFilter(event: Event) {

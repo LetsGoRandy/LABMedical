@@ -21,7 +21,7 @@
 
                     <mat-form-field>
                         <mat-label>Buscar Pacientes</mat-label>
-                        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
                     </mat-form-field>
 
                     <table mat-elevation-z8 mat-table [dataSource]="dataSource" matSort>
@@ -33,27 +33,27 @@
                         </ng-container>
                     
                         
-                        <ng-container matColumnDef="name">
+                        <ng-container matColumnDef="fullName">
                           <th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
-                          <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.name}}% </td>
+                          <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.fullName}} </td>
                         </ng-container>
                     
                         
-                        <ng-container matColumnDef="age">
+                        <ng-container matColumnDef="dateOfBirth">
                           <th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header> Idade </th>
-                          <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.age}} </td>
+                          <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.dateOfBirth}} </td>
                         </ng-container>
                     
                         
-                        <ng-container matColumnDef="phone">
+                        <ng-container matColumnDef="phoneNumber">
                           <th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
-                          <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.phone}} </td>
+                          <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.phoneNumber}} </td>
                         </ng-container>
 
                         
-                        <ng-container matColumnDef="helthPlan">
+                        <ng-container matColumnDef="healthPlanName">
                             <th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header> Plano de saúde </th>
-                            <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.helthPlan}} </td>
+                            <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.healthPlanName}} </td>
                           </ng-container>
 
                           

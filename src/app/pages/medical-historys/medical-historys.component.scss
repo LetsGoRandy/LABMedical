@@ -40,11 +40,9 @@ tr{ height: 40px;}
 .icon-table{
     color: $dark-gray-color;
     margin-right: 10px;
-    transform: rotate(0deg);
     transition: 0.3s linear all;
     &:hover{
        cursor: pointer;
        color: $secondary-color;
-       transform: rotate(359deg);
     }
 }
