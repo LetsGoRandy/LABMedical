@@ -19,8 +19,8 @@ export class MenuLateralComponent {
     this.router.navigate(['dashboard'])
   };
 
-  goToMedicalCharts() {
-    alert('função em desenvolvimento')
+  goToMedicalHistorys() {
+    this.router.navigate(['prontuarios'])
   };
 
   newPatient() {
