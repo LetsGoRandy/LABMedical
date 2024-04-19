@@ -1,0 +1,100 @@
+<div class="container-fluid p-3">    
+    <mat-icon class="float-end" style="cursor: pointer;" (click)="closeModal()" >close</mat-icon>
+
+    <h1 class="title">Detalhes do paciente</h1>
+    <h2 class="subtitle">Visualizar os dados completos do paciente</h2>
+
+    <div class="row mt-3">
+        <h3 class="col-12 title">Dados pessoais</h3>
+        <hr class="hr">
+        <div class="col-4">
+            <h4 class="title-information">Nome</h4>
+            <p class="information"> {{patientData.fullName}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Data de Nascimento</h4>
+            <p class="information"> {{patientData.dateOfBirth}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Gênero</h4>
+            <p class="information"> {{patientData.gender}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Naturalidade</h4>
+            <p class="information"> {{patientData.countryOfBirth}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Estado Civil</h4>
+            <p class="information"> {{patientData.maritalStatus}} </p>
+        </div>        
+        <div class="col-4">
+            <h4 class="title-information">CPF</h4>
+            <p class="information"> {{patientData.cpf}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">RG</h4>
+            <p class="information"> {{patientData.rg}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Telefone</h4>
+            <p class="information"> {{patientData.phoneNumber}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Email</h4>
+            <p class="information"> {{patientData.email}} </p>
+        </div>
+
+        <h3 class="col-12 title">Convênio</h3>
+        <hr class="hr">
+
+        <div class="col-4">
+            <h4 class="title-information">Plano</h4>
+            <p class="information"> {{patientData.healthPlanName}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">ID Plano</h4>
+            <p class="information"> {{patientData.healthPlanNumber}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Validade</h4>
+            <p class="information"> {{patientData.healthPlanVal}} </p>
+        </div>
+
+        <h3 class="col-12 title">Endereço</h3>
+        <hr class="hr">
+        
+        <div class="col-8">
+            <h4 class="title-information">Logradouro</h4>
+            <p class="information"> {{patientData.streetName}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Número</h4>
+            <p class="information"> {{patientData.streetNumber}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">CEP</h4>
+            <p class="information"> {{patientData.cep}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Bairro</h4>
+            <p class="information"> {{patientData.district}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Cidade</h4>
+            <p class="information"> {{patientData.city}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Estado</h4>
+            <p class="information"> {{patientData.state}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Complemento</h4>
+            <p class="information"> {{patientData.addressComplement}} </p>
+        </div>
+        <div class="col-4">
+            <h4 class="title-information">Ponto de Referência</h4>
+            <p class="information"> {{patientData.referencePoint}} </p>
+        </div>
+               
+    </div>
+</div>
