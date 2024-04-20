@@ -1,11 +1,18 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -22,42 +29,9 @@ export class LoginComponent {
   };
 
   loginForm = new FormGroup({
-    emailLogin: new FormControl(''),
-    passwordLogin: new FormControl(''),
+    emailLogin: new FormControl('',[Validators.required ,Validators.email]),
+    passwordLogin: new FormControl('', [Validators.required, Validators.minLength(3)]),
   });
-
-  registerForm = new FormGroup({
-    userNameRegister: new FormControl(''),
-    emailRegister: new FormControl(''),
-    passwordRegister: new FormControl(''),
-    confirmPasswordRegister: new FormControl(''),
-  });
-
-  submitRegister() {
-    if (this.registerForm.value.passwordRegister === this.registerForm.value.confirmPasswordRegister) {
-      const user = {
-        userName: this.registerForm.value.userNameRegister,
-        email: this.registerForm.value.emailRegister,
-        password: this.registerForm.value.passwordRegister,
-        auth: "",
-      }
-
-      const localUser = localStorage.getItem('registeredUsers');
-      if (localUser != null) {
-        const registeredUsers = JSON.parse(localUser);
-        registeredUsers.push(user);
-        localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers))
-      } else {
-        const registeredUsers = [];
-        registeredUsers.push(user);
-        localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers))
-      }
-      alert("Cadastrado com Sucesso!")
-      this.router.navigateByUrl('/login')
-    } else {
-      alert("As senhas não conferem!")
-    }
-  };
 
   submitLogin() {
     const userRegistered = this.registeredUsers.find(m => m.email == this.loginForm.value.emailLogin && m.password == this.loginForm.value.passwordLogin);
@@ -74,6 +48,10 @@ export class LoginComponent {
 
   resetPassword() {
     alert('Função em desenvolvimento!')
-}
+  }
+
+  goToRegister(){
+    this.router.navigateByUrl('/cadastro')
+  }
 
 }
