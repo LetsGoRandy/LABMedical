@@ -37,7 +37,7 @@ export class LoginComponent {
     const userRegistered = this.registeredUsers.find(m => m.email == this.loginForm.value.emailLogin && m.password == this.loginForm.value.passwordLogin);
 
     if (userRegistered != undefined) {
-      this.router.navigateByUrl('/dashboard')
+      this.router.navigateByUrl('/home')
       userRegistered.auth = 'logged'
       alert("Usuário Logado com Sucesso!")
       localStorage.setItem('registeredUsers', JSON.stringify(userRegistered))
