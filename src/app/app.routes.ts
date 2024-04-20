@@ -2,7 +2,8 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MedicalHistorysComponent } from './pages/medical-historys/medical-historys.component';
-import { LayoutComponent } from './pages/layout/layout.component';
+import { HomeComponent } from './pages/Home/home.component';
+
 
 export const routes: Routes = [
     {
@@ -15,12 +16,12 @@ export const routes: Routes = [
         component: LoginComponent
     },
     {
-        path:'home',
-        component: LayoutComponent
-    },
-    {
-        path:'prontuarios',
-        component: MedicalHistorysComponent
+        path: 'home',
+        component: HomeComponent,
+        children: [
+            { path: 'dashboard', component: DashboardComponent },
+            { path: 'prontuarios', component: MedicalHistorysComponent },
+        ]
     }
 
 ];
