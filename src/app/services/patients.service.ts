@@ -21,11 +21,11 @@ export class PatientsService {
     return this.httpClient.post<Patient>(this.url, patient)
   }
 
-  updatePatient(){
-
+  updatePatient(patient: Patient){
+    return this.httpClient.put<Patient>(`${this.url}/${patient.id}`,patient)
   }
 
-  deletePatient(){
-    
+  deletePatient(id: number){
+    return this.httpClient.delete<void>(`${this.url}/${id}`)
   }
 }

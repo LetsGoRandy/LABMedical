@@ -1,0 +1,17 @@
+@import '../../../styles/variables.scss';
+
+.title{
+    font-size: 25px;
+    font-weight: 500;
+    margin-left: 10px;
+    padding: 0;
+    color: $primary-color;
+}
+
+.subtitle{
+    font-size: 16px;
+    font-weight: 300;
+    padding: 2px 0px 14px 0px;
+    margin: 0;
+    color: $dark-gray-color;
+}
