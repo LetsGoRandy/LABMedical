@@ -1,0 +1,295 @@
+<div class="container-fluid p-3">
+  <mat-icon class="float-end" style="cursor: pointer" (click)="closeModal()"
+    >close</mat-icon
+  >
+
+  <h1 class="title">Pacientes</h1>
+  <h2 class="subtitle">Preencha todos os campos com *.</h2>
+
+  <form class="row" [formGroup]="formPatient">    
+    <div class="col-12">
+        <button class="btn btn-primary btn-lg float-end" [disabled]="!formPatient.valid" (click)="addPatient()" >Cadastrar</button>
+    </div>
+    
+    <h3 class="col-12 title">Dados pessoais</h3>    
+    <hr class="hr" />
+
+    <div class="col-12 col-md-6 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Nome Completo</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="fullName"
+          placeholder="Ex. Carlos Silva"
+        />
+        @if (formPatient.controls['fullName'].invalid) {<mat-error
+          >Digite o nome completo</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-3 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Data Nascimento</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="dateOfBirth" />
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-3 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Gênero</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="one">Masculino</mat-option>
+          <mat-option value="two">Feminino</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Estado Civil</mat-label>
+        <mat-select formControlName="maritalStatus">
+          <mat-option value="one">Solteiro</mat-option>
+          <mat-option value="two">Casado</mat-option>
+          <mat-option value="Three">União Estável</mat-option>
+          <mat-option value="four">Divorciado (a)</mat-option>
+          <mat-option value="five">Viúvo (a)</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Naturalidade</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="countryOfBirth"
+          placeholder="Ex. Brasileiro"
+        />
+        @if (formPatient.controls['countryOfBirth'].invalid) {<mat-error
+          >Digite a Naturalidade</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>CPF</mat-label>
+        <input
+          type="number"
+          matInput
+          formControlName="cpf"
+          placeholder="Ex. 222.333.444-55"
+        />
+        @if (formPatient.controls['cpf'].invalid) {<mat-error
+          >CPF inválido</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>RG</mat-label>
+        <input
+          type="number"
+          matInput
+          formControlName="rg"
+          placeholder="Ex. 234567"
+        />
+        @if (formPatient.controls['rg'].invalid) {<mat-error
+          >RG inválido</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Telefone</mat-label>
+        <span matTextPrefix>+55 &nbsp;</span>
+        <input
+          type="tel"
+          matInput
+          formControlName="phoneNumber"
+          placeholder="Ex. 48 99999-9999"
+        />
+        @if (formPatient.controls['phoneNumber'].invalid) {<mat-error
+          >Telefone inválido</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="Ex. Carol@gmail.com"
+        />
+        @if (formPatient.controls['email'].invalid) {<mat-error
+          >Email inválido</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <h3 class="col-12 title">Convênio</h3>
+    <hr class="hr" />
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Plano de saúde</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="healthPlanName"
+          placeholder="Ex. Unimed"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Validade</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="healthPlanVal" />
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Número do plano</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="healthPlanNumber"
+          placeholder="2200223230"
+        />
+      </mat-form-field>
+    </div>
+
+    <h3 class="col-12 title">Endereço</h3>
+    <hr class="hr" />
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>CEP</mat-label>
+        <input
+          type="number"
+          matInput
+          formControlName="cep"
+          placeholder="88119-350"
+        />
+        @if (formPatient.controls['cep'].invalid) {<mat-error
+          >CEP inválido</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-8 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Logradouro</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="streetName"
+          placeholder="Rua Acelino Pereira"
+        />
+        @if (formPatient.controls['streetName'].invalid) {<mat-error
+          >Digite o nome da rua</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Número</mat-label>
+        <input
+          type="number"
+          matInput
+          formControlName="streetNumber"
+          placeholder="357"
+        />
+        @if (formPatient.controls['streetNumber'].invalid) {<mat-error
+          >Digite o número</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Bairro</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="district"
+          placeholder="2200223230"
+        />
+        @if (formPatient.controls['district'].invalid) {<mat-error
+          >Digite o bairro</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Cidade</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="city"
+          placeholder="Ex. São José"
+        />
+        @if (formPatient.controls['city'].invalid) {<mat-error
+          >Digite a cidade</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Estado</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="state"
+          placeholder="Ex. Santa Catarina"
+        />
+        @if (formPatient.controls['state'].invalid) {<mat-error
+          >Digite o estado</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Complemento</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="addressComplement"
+          placeholder="Ex. apto 201"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Ponto de referência</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="referencePoint"
+          placeholder="Ex. Próximo ao supermercado"
+        />
+      </mat-form-field>
+    </div>
+  </form>
+</div>
