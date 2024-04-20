@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 // Angular Material
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 // Components
 import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
-import { MenuLateralComponent } from '../../components/menu-lateral/menu-lateral.component';
+import { sidebarComponent } from '../../components/Sidebar/sidebar.component';
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
-    MenuLateralComponent,
+    sidebarComponent,
     ToolbarComponent,
-    MatIconModule,    
+    MatIconModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
