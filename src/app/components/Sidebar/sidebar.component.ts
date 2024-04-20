@@ -31,6 +31,7 @@ export class sidebarComponent {
   };
 
   menuItems = signal<MenuItem[]>([
+    // PAGES
     {
       icon: 'dashboard',
       label: 'Dashboard',
@@ -40,6 +41,22 @@ export class sidebarComponent {
       icon: 'analytics',
       label: 'Lista Prontuários',
       route: 'prontuarios'
+    },
+    // MODALS
+    {
+      icon: 'person_add_alt',
+      label: 'Novo Paciente',
+      route: ''
+    },
+    {
+      icon: 'local_hospital',
+      label: 'Nova Consulta',
+      route: ''
+    },
+    {
+      icon: 'medical_information',
+      label: 'Novo Exame',
+      route: ''
     }
 
   ]);
