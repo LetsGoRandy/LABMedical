@@ -1,0 +1,102 @@
+<section class="vh-100 gradient-custom">
+  <div class="container p-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div
+          class="card bg-color text-primary-color"
+          style="border-radius: 1rem"
+        >
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4">
+              <div class="img-content">
+                <img src="../../../assets/LABMedical.svg" />
+              </div>
+              <h2 class="fw-bold mb-2 text-uppercase">Cadastro</h2>
+              <p class="text-primary-color mb-5">
+                Insira seus dados para se cadastrar!
+              </p>
+
+              <form class="example-form" [formGroup]="registerForm">
+                <div class="col-12 mb-2">
+                  <mat-form-field class="w-100">
+                    <mat-label>Nome</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      formControlName="userNameRegister"
+                      placeholder="Ex. example@gmail.com"
+                    />
+                    @if (registerForm.controls['userNameRegister'].invalid)
+                    {<mat-error>Email inválido</mat-error>}
+                  </mat-form-field>
+                </div>
+                <div class="col-12 mb-2">
+                  <mat-form-field class="w-100">
+                    <mat-label>Email</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      formControlName="emailRegister"
+                      placeholder="Ex. example@gmail.com"
+                    />
+                    @if (registerForm.controls['emailRegister'].invalid)
+                    {<mat-error>Email inválido</mat-error>}
+                  </mat-form-field>
+                </div>
+
+                <div class="col-12 mb-2">
+                  <mat-form-field class="w-100">
+                    <mat-label>Senha</mat-label>
+                    <input
+                      type="password"
+                      matInput
+                      formControlName="passwordRegister"
+                      placeholder="Ex. Mínimo 3 dígitos"
+                    />
+                    @if (registerForm.controls['passwordRegister'].invalid)
+                    {<mat-error>Senha inválida</mat-error>}
+                  </mat-form-field>
+                </div>
+
+                <div class="col-12 mb-2">
+                  <mat-form-field class="w-100">
+                    <mat-label>Confirmar Senha</mat-label>
+                    <input
+                      type="password"
+                      matInput
+                      formControlName="confirmPasswordRegister"
+                      placeholder="Digite a senha novamente"
+                    />
+                    @if (registerForm.controls['confirmPasswordRegister'].invalid)
+                    {<mat-error>Senha inválida</mat-error>}
+                  </mat-form-field>
+                </div>
+              </form>
+
+              <button
+                data-mdb-button-init
+                data-mdb-ripple-init
+                class="btn primary-color white-color btn-lg px-5"
+                type="submit"
+                [disabled]="!registerForm.valid"
+                (click)="submitRegister()"
+              >
+                Cadastrar
+              </button>
+            </div>
+
+            <div>
+              <hr />
+              <p class="mb-0" (click)="goToLogin()">
+                Já tem cadastro?
+                <a class="text-secondary-color fw-bold" style="cursor: pointer"
+                  >Login</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
