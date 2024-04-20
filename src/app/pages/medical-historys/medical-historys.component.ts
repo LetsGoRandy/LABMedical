@@ -8,7 +8,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { MenuLateralComponent } from '../../components/menu-lateral/menu-lateral.component';
+import { sidebarComponent } from '../../components/Sidebar/sidebar.component';
 import { ModalFormPatientComponent } from '../../components/modal-form-patient/modal-form-patient.component';
 import { Patient } from '../../interfaces/patient';
 import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
@@ -21,7 +21,7 @@ import { ModalViewPatientComponent } from '../../components/modal-view-patient/m
   imports: [
     HttpClientModule,
     // Components
-    MenuLateralComponent,
+    sidebarComponent,
     ToolbarComponent,
     ModalViewPatientComponent,
     // Angular Material
