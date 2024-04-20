@@ -1,37 +1,17 @@
-<nav class="sidemenu col">
-  <ul>
-    <li>
-      <img src="../../assets/LABMedical.svg" width="150px" />
-    </li>
-  </ul>
-  <ul>
-    <li (click)="backToHome()">
-      <mat-icon> home</mat-icon>
-      Início
-    </li>
-    <li (click)="goToMedicalHistorys()">
-      <mat-icon>format_list_bulleted</mat-icon>
-      Prontuários
-    </li>
-  </ul>
-  <ul>
-    <li (click)="newPatient()">
-      <mat-icon>person_add_alt_1</mat-icon>
-      Novo Paciente
-    </li>
-    <li (click)="newMedicalAppointment()">
-      <mat-icon>note_add</mat-icon>
-      Novo consulta
-    </li>
-    <li (click)="newMedicalExamination()">
-      <mat-icon>medical_information</mat-icon>
-      Novo Exame
-    </li>
-  </ul>
-  <ul>
-    <li class="logout" (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      Sair
-    </li>
-  </ul>
-</nav>
+<div class="sidenav-header">
+  <img
+    width="100"
+    height="100"
+    src="../../../assets/LABMedical.svg"
+    alt="logo LABMedical"
+  />
+  <div class="header-text">
+    <h2>Sistema de Gestão</h2>
+  </div>
+</div>
+<mat-nav-list>
+  <a mat-list-item *ngFor="let item of menuItems()"> 
+    <mat-icon matListItemIcon >{{item.icon}}</mat-icon>
+    <span matListItemTitle>{{item.label}}</span>    
+</a>
+</mat-nav-list>
