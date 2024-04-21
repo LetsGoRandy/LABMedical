@@ -16,6 +16,7 @@
             font-size: 1rem;
             line-height: 1.5rem;
             font-weight: 500;
+            color: $dark-gray-color;
         }
     }
 
@@ -24,4 +25,8 @@
 .hide-header-text{
     opacity: 0;
     height: 0px;
+}
+
+.span{
+    color: $dark-gray-color;
 }

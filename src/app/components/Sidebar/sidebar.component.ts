@@ -10,6 +10,18 @@ export type MenuItem = {
   label: string;
   route?: string
 }
+export type ModalsItem = {
+  icon: string;
+  label: string;
+  route?: string
+}
+export type logoutItem = {
+  icon: string;
+  label: string;
+  route?: string
+}
+
+
 @Component({
   selector: 'app-sidebar',
   standalone: true,
@@ -42,24 +54,35 @@ export class sidebarComponent {
       label: 'Lista Prontuários',
       route: 'prontuarios'
     },
-    // MODALS
-    {
-      icon: 'person_add_alt',
-      label: 'Novo Paciente',
-      route: ''
-    },
-    {
-      icon: 'local_hospital',
-      label: 'Nova Consulta',
-      route: ''
-    },
-    {
-      icon: 'medical_information',
-      label: 'Novo Exame',
-      route: ''
-    }
-
   ]);
+
+  modalsItems = signal<ModalsItem[]>([
+    {
+      icon: 'person_add',
+      label: 'Novo Paciente',
+      route: 'prontuarios'
+    },
+    {
+      icon: 'monitor_heart',
+      label: 'Nova Consulta',
+      route: 'prontuarios'
+    },
+    {
+      icon: 'medical_services',
+      label: 'Novo Exame',
+      route: 'prontuarios'
+    }
+  ])
+
+  logoutItems = signal<logoutItem[]>([
+    {
+      icon: 'logout',
+      label: 'Sair',
+      route: 'login'
+    },
+  ])
+
+
 
   profilePicSize = computed(()=> this.sideNavCollapsed() ? '32' : '100')
 }
