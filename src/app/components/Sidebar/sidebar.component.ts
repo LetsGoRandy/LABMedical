@@ -60,17 +60,17 @@ export class sidebarComponent {
     {
       icon: 'person_add',
       label: 'Novo Paciente',
-      route: 'prontuarios'
+      route: 'novopaciente'
     },
     {
       icon: 'monitor_heart',
       label: 'Nova Consulta',
-      route: 'prontuarios'
+      route: 'novaconsulta'
     },
     {
       icon: 'medical_services',
       label: 'Novo Exame',
-      route: 'prontuarios'
+      route: 'novoexame'
     }
   ])
 
