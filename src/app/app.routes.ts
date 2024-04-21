@@ -26,4 +26,16 @@ export const routes: Routes = [
         path: 'prontuarios',
         component: MedicalHistorysComponent 
     },
+    // { 
+    //     path: 'novopaciente',
+    //     component: NewPatientComponent 
+    // },
+    // { 
+    //     path: 'novaconsulta',
+    //     component: NewAppointmentComponent 
+    // },
+    // { 
+    //     path: 'novoexame',
+    //     component: NewExaminationComponent 
+    // },
 ];

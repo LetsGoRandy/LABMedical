@@ -1,72 +1,23 @@
 @import "../../../styles/variables.scss";
 
-section {
-  height: auto;
-  padding: 15px;
-  background-color: $secondary-bg-color;
+.user{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
 
-  .pages{
-    
-    p {
-        margin: 0;
-        font-size: small;
-        color: $gray-color;
-      }
-  }
+.title{
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 10px;
+  padding-top: 3px;
+  color: $primary-color;
+}
 
-  .container-perfil {
-    display: flex;
-    flex-direction: row-reverse;
-    width: 100%;
-    align-items: center;
-    gap: 10px;
-
-
-    .img-perfil {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .info-perfil{
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-
-        h4{
-            font-size: 12px;
-            font-weight: 500;
-            margin: 5px 0px 0px 0px;
-        }
-        h5{
-            font-size: 11px;
-            font-weight: 200;
-            margin: 3px 0px 0px 0px;
-        }
-
-        span{
-            a{
-                text-decoration: none;
-                color: $primary-color;
-                font-size: 11px;
-                display: flex;
-                align-content: center;
-                text-align: end;
-                margin: 3px 0px 0px 0px;
-    
-                mat-icon{
-                    font-size: 13px;
-                    margin-right: 3px;
-                }
-            }
-            &:hover{
-                color: $dark-gray-color;
-            }
-            
-        }
-    }
-  }
+.img-perfil {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
 }
