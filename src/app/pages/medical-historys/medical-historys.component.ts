@@ -88,15 +88,7 @@ export class MedicalHistorysComponent {
       this.dataSource.paginator.firstPage();
     }
   }
-
-  // Modal View Patient
-  openModalViewPatient(patient: Patient) {
-    this.dialog.open(ModalViewPatientComponent, {
-      width: '700px',
-      height: '720px',
-      data: patient,
-    })
-  }
+  
 
   // Modal Add Patient
   openModalAddPatient() {
