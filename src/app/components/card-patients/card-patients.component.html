@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 mb-3 mb-sm-0" *ngFor="let Patient of listPatients">
+      <div class="card bg-light h-100">
+        <img src="../../../assets/icon-Patient.svg " class="card-img-top" />
+        <h5 class="card-title title"> {{Patient.fullName}} </h5>
+        <p class="subtitle">{{Patient.dateOfBirth}}</p>
+        <p class="subtitle">{{Patient.phoneNumber}}</p>
+        <p class="subtitle">{{Patient.healthPlanName}}</p>        
+        <button class="btn btn-primary" (click)="openModalViewPatient(Patient)" >VER MAIS</button>
+      </div>
+    </div>
+  </div>
+</div>

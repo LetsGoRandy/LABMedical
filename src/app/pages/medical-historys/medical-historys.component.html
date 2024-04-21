@@ -1,85 +1,142 @@
-<div class="container.container-fluidwidth: 100% .container-md">
-    <div class="row g-0">
-      <app-sidebar class="col col-md-2"></app-sidebar>
-      <div class="col">
-        <!-- Toolbar -->
-        <app-toolbar class="col-12"></app-toolbar>
-        <!-- Content page -->
-        <div class="container-fluid ps-4 pt-3">
 
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="title">Prontuários</h1>
-                    <h2 class="subtitle">Gerencie os pacientes, adicione, edite e exclua!</h2>
-                </div>
-            </div>
+    <div class="container-fluid ps-4 pt-3">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="title">Prontuários</h1>
+          <h2 class="subtitle">
+            Gerencie os pacientes, adicione, edite e exclua!
+          </h2>
+        </div>
+      </div>
 
-            <div class="row">
-                <div class="col-12">
+      <div class="row">
+        <div class="col-12">
+          <button
+            class="btn btn-primary btn-lg float-end"
+            (click)="openModalAddPatient()"
+          >
+            + Cadastrar
+          </button>
 
-                    <button class="btn btn-primary btn-lg float-end" (click)="openModalAddPatient()">+ Cadastrar</button>
+          <mat-form-field class="col-6">
+            <mat-label>Buscar Pacientes</mat-label>
+            <input
+              matInput
+              (keyup)="applyFilter($event)"
+              placeholder=""
+              #input
+            />
+          </mat-form-field>
 
-                    <mat-form-field class="col-6">
-                        <mat-label>Buscar Pacientes</mat-label>
-                        <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
-                    </mat-form-field>
+          <table mat-elevation-z8 mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="id">
+              <th
+                class="th-table"
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+              >
+                Id
+              </th>
+              <td class="td-table" mat-cell *matCellDef="let patient">
+                {{ patient.id }}
+              </td>
+            </ng-container>
 
-                    <table mat-elevation-z8 mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="fullName">
+              <th
+                class="th-table"
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+              >
+                Nome
+              </th>
+              <td class="td-table" mat-cell *matCellDef="let patient">
+                {{ patient.fullName }}
+              </td>
+            </ng-container>
 
-                        
-                        <ng-container matColumnDef="id">
-                          <th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-                          <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.id}} </td>
-                        </ng-container>
-                    
-                        
-                        <ng-container matColumnDef="fullName">
-                          <th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
-                          <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.fullName}} </td>
-                        </ng-container>
-                    
-                        
-                        <ng-container matColumnDef="dateOfBirth">
-                          <th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header> Idade </th>
-                          <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.dateOfBirth}} </td>
-                        </ng-container>
-                    
-                        
-                        <ng-container matColumnDef="phoneNumber">
-                          <th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
-                          <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.phoneNumber}} </td>
-                        </ng-container>
+            <ng-container matColumnDef="dateOfBirth">
+              <th
+                class="th-table"
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+              >
+                Idade
+              </th>
+              <td class="td-table" mat-cell *matCellDef="let patient">
+                {{ patient.dateOfBirth }}
+              </td>
+            </ng-container>
 
-                        
-                        <ng-container matColumnDef="healthPlanName">
-                            <th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header> Plano de saúde </th>
-                            <td class="td-table" mat-cell *matCellDef="let patient"> {{patient.healthPlanName}} </td>
-                          </ng-container>
+            <ng-container matColumnDef="phoneNumber">
+              <th
+                class="th-table"
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+              >
+                Telefone
+              </th>
+              <td class="td-table" mat-cell *matCellDef="let patient">
+                {{ patient.phoneNumber }}
+              </td>
+            </ng-container>
 
-                          
-                        <ng-container matColumnDef="actions">
-                            <th class="th-table" mat-header-cell *matHeaderCellDef mat-sort-header> Ações </th>
-                            <td class="td-table" mat-cell *matCellDef="let patient">
-                                <mat-icon class="icon-table" (click)="openModalViewPatient(patient)" >visibility</mat-icon>
-                                <mat-icon class="icon-table">edit</mat-icon>
-                                <mat-icon class="icon-table">delete</mat-icon>
-                            </td>
-                          </ng-container>
-                    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let patient; columns: displayedColumns;"></tr>
-                    
-                        
-                        <tr class="mat-row" *matNoDataRow>
-                          <td class="mat-cell  td-table" colspan="4">paciente não encontrado: "{{input.value}}"</td>
-                        </tr>
-                      </table>
-                    
-                      <mat-paginator [pageSizeOptions]="[3, 5, 10]" aria-label="Selecione pacientes por página"></mat-paginator>
+            <ng-container matColumnDef="healthPlanName">
+              <th
+                class="th-table"
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+              >
+                Plano de saúde
+              </th>
+              <td class="td-table" mat-cell *matCellDef="let patient">
+                {{ patient.healthPlanName }}
+              </td>
+            </ng-container>
 
-                </div>
-            </div>
-        </div>        
+            <ng-container matColumnDef="actions">
+              <th
+                class="th-table"
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+              >
+                Ações
+              </th>
+              <td class="td-table" mat-cell *matCellDef="let patient">
+                <!-- <mat-icon
+                  class="icon-table"
+                  (click)="openModalViewPatient(patient)"
+                  >visibility</mat-icon
+                > -->
+                <mat-icon class="icon-table">edit</mat-icon>
+                <mat-icon class="icon-table">delete</mat-icon>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr
+              mat-row
+              *matRowDef="let patient; columns: displayedColumns"
+            ></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell td-table" colspan="4">
+                paciente não encontrado: "{{ input.value }}"
+              </td>
+            </tr>
+          </table>
+
+          <mat-paginator
+            [pageSizeOptions]="[3, 5, 10]"
+            aria-label="Selecione pacientes por página"
+          ></mat-paginator>
+        </div>
       </div>
     </div>
-  </div>
+  

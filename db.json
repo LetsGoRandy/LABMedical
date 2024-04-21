@@ -1,5 +1,12 @@
 {
-  "users": [ ],
+  "users": [
+    {
+      "id": "b4b0",
+      "name": "randy",
+      "email": "randy@gmail.com",
+      "password": "123"
+    }
+  ],
   "patients": [
     {
       "id": "2",
@@ -46,6 +53,29 @@
       "state": "Santa Catarina",
       "addressComplement": "Casa 01",
       "referencePoint": "Próximo ao supermercado"
+    },
+    {
+      "id": "3b3a",
+      "fullName": "Randy",
+      "gender": "one",
+      "dateOfBirth": "1990-05-21T03:00:00.000Z",
+      "cpf": 2768920380,
+      "rg": 6237987,
+      "maritalStatus": "one",
+      "phoneNumber": "48998360776",
+      "email": "randy@gmail.com",
+      "countryOfBirth": "brasileiro",
+      "healthPlanName": "Salumed",
+      "healthPlanNumber": "02020202555346",
+      "healthPlanVal": "1190-05-31T03:06:28.000Z",
+      "cep": 88119350,
+      "streetName": "Rua acelino pereira",
+      "streetNumber": 357,
+      "district": "Potecas ",
+      "city": "São josé",
+      "state": "Santa catarina",
+      "addressComplement": "casa 01",
+      "referencePoint": "proximo a padaria"
     }
   ]
 }
