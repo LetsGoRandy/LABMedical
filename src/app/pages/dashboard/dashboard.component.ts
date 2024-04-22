@@ -31,7 +31,8 @@ export class DashboardComponent {
   numberAppointment: string = '8'
   numberExamination: string = '5'
   listPatients: Patient[] = []
-  Userlogged: any; 
+  userLogged: any;
+  
 
   constructor(private patientsService:PatientsService){ }
 
@@ -39,17 +40,14 @@ export class DashboardComponent {
 
     // Chama JSON SERVER
     this.patientsService.getAllpatients().subscribe((res)=>{
-      console.log(res)
       this.listPatients = res;
     })
 
     // Chama LOCALSTORAGE
-    const usuariosCadastradosJSON = localStorage.getItem('usuariosCadastrados');
-    if (usuariosCadastradosJSON) {
-      const usuariosCadastrados = JSON.parse(usuariosCadastradosJSON);
-      if (usuariosCadastrados.auth === 'logged') {
-         this.Userlogged = usuariosCadastrados;        
-      } 
+    const localData = sessionStorage.getItem('userLogged');
+    if (localData != null) {
+      this.userLogged = JSON.parse(localData)
+      console.log(this.userLogged)
     }
   }
    

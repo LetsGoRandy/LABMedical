@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -16,30 +17,24 @@ import { CommonModule } from '@angular/common';
   styleUrl: './toolbar.component.scss'
 })
 export class ToolbarComponent {
+  userLogged: any; 
 
-  Userlogged: any
+  constructor(private router: Router){}
 
   ngOnInit() {
-    const usuariosCadastradosJSON = localStorage.getItem('usuariosCadastrados');
-    if (usuariosCadastradosJSON) {
-      const usuariosCadastrados = JSON.parse(usuariosCadastradosJSON);
-      if (usuariosCadastrados.auth === 'logged') {
-         this.Userlogged = usuariosCadastrados;        
-      } 
-    } 
+    const localData = sessionStorage.getItem('userLogged');
+    if (localData != null) {
+      this.userLogged = JSON.parse(localData)
+      console.log(this.userLogged)
+    }
   }
 
+ 
 
   submitLogout() {
-    const userlogged = this.Userlogged;
-
-    if (userlogged.auth === "logged") {
-      userlogged.auth = '';
-      localStorage.setItem('usuariosCadastrados', JSON.stringify(userlogged));
-      alert("Usuário deslogado com sucesso!");
-    } else {
-      alert("Nenhum usuário logado encontrado.");
-    }
+    sessionStorage.clear()
+    this.router.navigate(['login'])
+    alert('Usuário deslogado com sucesso!') 
   }
 
 

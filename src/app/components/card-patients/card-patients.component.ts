@@ -3,25 +3,25 @@ import { Patient } from '../../interfaces/patient';
 import { ModalViewPatientComponent } from '../modal-view-patient/modal-view-patient.component';
 import { PatientsService } from '../../services/patients.service';
 import { MatDialog } from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { CommonModule, DatePipe } from '@angular/common';
-import { AgePipe } from "../../age.pipe";
+import { AgePipe } from "../../pipes/age.pipe";
 
 @Component({
-    selector: 'app-card-patients',
-    standalone: true,
-    templateUrl: './card-patients.component.html',
-    styleUrl: './card-patients.component.scss',
-    imports: [
-        CommonModule,
-        MatButtonModule,
-        MatCardModule,
-        AgePipe
-    ]
+  selector: 'app-card-patients',
+  standalone: true,
+  templateUrl: './card-patients.component.html',
+  styleUrl: './card-patients.component.scss',
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatCardModule,
+    AgePipe
+  ]
 })
 export class CardPatientsComponent {
-  
+
   listPatients: Patient[] = []
 
   constructor(
@@ -29,8 +29,8 @@ export class CardPatientsComponent {
     public dialog: MatDialog,
   ) { }
 
-  ngOnInit(): void{
-    this.patientsService.getPatient().subscribe(res=>{
+  ngOnInit(): void {
+    this.patientsService.getPatient().subscribe(res => {
       // console.log(res)
       this.listPatients = res;
     })

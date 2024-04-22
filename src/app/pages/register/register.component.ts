@@ -34,8 +34,7 @@ export class RegisterComponent {
       const user = {
         userName: this.registerForm.value.userNameRegister,
         email: this.registerForm.value.emailRegister,
-        password: this.registerForm.value.passwordRegister,
-        auth: "",
+        password: this.registerForm.value.passwordRegister,        
       }
 
       const usuarioLocal = localStorage.getItem('usuariosCadastrados');
