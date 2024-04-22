@@ -37,14 +37,13 @@ export class LoginComponent {
     const userRegistered = this.usuariosCadastrados.find(m => m.email == this.loginForm.value.emailLogin && m.password == this.loginForm.value.passwordLogin);
 
     if (userRegistered != undefined) {
-      this.router.navigateByUrl('/dashboard')
-      userRegistered.auth = 'logged'
-      alert("Usuário Logado com Sucesso!")
-      localStorage.setItem('usuariosCadastrados', JSON.stringify(userRegistered))
+        this.router.navigateByUrl('/dashboard');
+        sessionStorage.setItem('userLogged', JSON.stringify(userRegistered));
+        alert("Usuário Logado com Sucesso!");
     } else {
-      alert("Dados de Login incorretos.")
+        alert("Dados de Login incorretos.");
     }
-  };
+}
 
   resetPassword() {
     alert('Função em desenvolvimento!')

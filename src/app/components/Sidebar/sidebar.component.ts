@@ -36,18 +36,9 @@ export type logoutItem = {
   ]
 })
 export class sidebarComponent {
-  Userlogged: any;
+  userlogged: any;
 
-  ngOnInit() {
-    // Chama LOCALSTORAGE
-    const usuariosCadastradosJSON = localStorage.getItem('usuariosCadastrados');
-    if (usuariosCadastradosJSON) {
-      const usuariosCadastrados = JSON.parse(usuariosCadastradosJSON);
-      if (usuariosCadastrados.auth === 'logged') {
-        this.Userlogged = usuariosCadastrados;
-      }
-    }
-  }
+  
 
   sideNavCollapsed = signal(false)
   @Input() set collapsed(val: boolean) {
@@ -97,15 +88,8 @@ export class sidebarComponent {
 
 
   submitLogout() {
-    const userlogged = this.Userlogged;
-
-    if (userlogged.auth === "logged") {
-      userlogged.auth = '';
-      localStorage.setItem('usuariosCadastrados', JSON.stringify(userlogged));
-      alert("Usuário deslogado com sucesso!");
-    } else {
-      alert("Nenhum usuário logado encontrado.");
-    }
+      sessionStorage.clear()
+      alert('Usuário deslogado com sucesso!')    
   }
 
 
