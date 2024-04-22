@@ -6,8 +6,9 @@ import {MatCardModule} from '@angular/material/card';
 import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
 import { sidebarComponent } from '../../components/Sidebar/sidebar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MedicalHistorysComponent } from "../medical-historys/medical-historys.component";
 import { CardPatientsComponent } from '../../components/card-patients/card-patients.component';
+import { Patient } from '../../interfaces/patient';
+import { PatientsService } from "../../../app/services/patients.service";
 
 
 @Component({
@@ -25,14 +26,33 @@ import { CardPatientsComponent } from '../../components/card-patients/card-patie
     ]
 })
 export class DashboardComponent {
-
-  titlePage: string = 'Informarções e Estatísticas'
-  userName: string = 'João Gomes'
-  numberPatients: string = '10'
+  
+  titlePage: string = 'Informarções e Estatísticas'    
   numberAppointment: string = '8'
   numberExamination: string = '5'
-  patientsService: any;
-  listPatients: any;
+  listPatients: Patient[] = []
+  Userlogged: any; 
+
+  constructor(private patientsService:PatientsService){ }
+
+  ngOnInit(): void{
+
+    // Chama JSON SERVER
+    this.patientsService.getAllpatients().subscribe((res)=>{
+      console.log(res)
+      this.listPatients = res;
+    })
+
+    // Chama LOCALSTORAGE
+    const usuariosCadastradosJSON = localStorage.getItem('usuariosCadastrados');
+    if (usuariosCadastradosJSON) {
+      const usuariosCadastrados = JSON.parse(usuariosCadastradosJSON);
+      if (usuariosCadastrados.auth === 'logged') {
+         this.Userlogged = usuariosCadastrados;        
+      } 
+    }
+  }
+   
 
  
 }

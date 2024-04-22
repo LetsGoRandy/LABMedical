@@ -6,17 +6,19 @@ import { MatDialog } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { CommonModule, DatePipe } from '@angular/common';
+import { AgePipe } from "../../age.pipe";
 
 @Component({
-  selector: 'app-card-patients',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatCardModule
-  ],
-  templateUrl: './card-patients.component.html',
-  styleUrl: './card-patients.component.scss'
+    selector: 'app-card-patients',
+    standalone: true,
+    templateUrl: './card-patients.component.html',
+    styleUrl: './card-patients.component.scss',
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatCardModule,
+        AgePipe
+    ]
 })
 export class CardPatientsComponent {
   
@@ -38,7 +40,7 @@ export class CardPatientsComponent {
   openModalViewPatient(patient: Patient) {
     this.dialog.open(ModalViewPatientComponent, {
       width: '700px',
-      height: '720px',
+      height: '800px',
       data: patient,
     })
   }

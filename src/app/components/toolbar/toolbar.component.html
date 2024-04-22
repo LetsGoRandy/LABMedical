@@ -1,6 +1,7 @@
 <div class="user">
-  <h4 class="title">{{ userName }}</h4>
-
+  <div *ngIf="Userlogged">
+    <h4 class="title">{{ Userlogged.userName }}</h4>
+  </div>
   <div [matMenuTriggerFor]="beforeMenu">
     <img src="/assets/img-doctor.jpg" class="img-perfil" />
   </div>
@@ -9,9 +10,6 @@
       Perfil
       <mat-icon>manage_accounts</mat-icon>
     </button>
-    <button mat-menu-item>
-      Logout
-      <mat-icon>logout</mat-icon>
-    </button>
+    <button mat-menu-item (click)="submitLogout()">Logout<mat-icon>logout</mat-icon></button>
   </mat-menu>
 </div>
