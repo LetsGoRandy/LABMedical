@@ -25,7 +25,6 @@ export class ToolbarComponent {
     const localData = sessionStorage.getItem('userLogged');
     if (localData != null) {
       this.userLogged = JSON.parse(localData)
-      console.log(this.userLogged)
     }
   }
 
