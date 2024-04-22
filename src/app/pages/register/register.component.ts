@@ -38,20 +38,20 @@ export class RegisterComponent {
         auth: "",
       }
 
-      const localUser = localStorage.getItem('registeredUsers');
-      if (localUser != null) {
-        const registeredUsers = JSON.parse(localUser);
-        registeredUsers.push(user);
-        localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers))
-      } else {
-        const registeredUsers = [];
-        registeredUsers.push(user);
-        localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers))
-      }
+      const usuarioLocal = localStorage.getItem('usuariosCadastrados');
+      if (usuarioLocal != null) {
+        const usuariosCadastrados = JSON.parse(usuarioLocal);
+        usuariosCadastrados.push(user);
+        localStorage.setItem('usuariosCadastrados', JSON.stringify(usuariosCadastrados))
+      }else {
+        const usuariosCadastrados = [];
+        usuariosCadastrados.push(user);
+        localStorage.setItem('usuariosCadastrados', JSON.stringify(usuariosCadastrados))
+      } 
       alert("Cadastrado com Sucesso!")
-      this.router.navigateByUrl('/login')
-    } else {
-      alert("As senhas não conferem!")
+      this.router.navigateByUrl('/login')        
+    } else{
+      alert("As Senhas não conferem!")
     }
   };
 

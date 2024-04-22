@@ -17,14 +17,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  registeredUsers: any[] = [];
+  usuariosCadastrados: any[] = [];
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    const localData = localStorage.getItem('registeredUsers');
+    const localData = localStorage.getItem('usuariosCadastrados');
     if (localData != null) {
-      this.registeredUsers = JSON.parse(localData)
+      this.usuariosCadastrados = JSON.parse(localData)
     }
   };
 
@@ -34,13 +34,13 @@ export class LoginComponent {
   });
 
   submitLogin() {
-    const userRegistered = this.registeredUsers.find(m => m.email == this.loginForm.value.emailLogin && m.password == this.loginForm.value.passwordLogin);
+    const userRegistered = this.usuariosCadastrados.find(m => m.email == this.loginForm.value.emailLogin && m.password == this.loginForm.value.passwordLogin);
 
     if (userRegistered != undefined) {
-      this.router.navigateByUrl('/home')
+      this.router.navigateByUrl('/dashboard')
       userRegistered.auth = 'logged'
       alert("Usuário Logado com Sucesso!")
-      localStorage.setItem('registeredUsers', JSON.stringify(userRegistered))
+      localStorage.setItem('usuariosCadastrados', JSON.stringify(userRegistered))
     } else {
       alert("Dados de Login incorretos.")
     }

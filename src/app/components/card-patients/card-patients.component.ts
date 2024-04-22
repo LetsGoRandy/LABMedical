@@ -29,7 +29,7 @@ export class CardPatientsComponent {
 
   ngOnInit(): void{
     this.patientsService.getPatient().subscribe(res=>{
-      console.log(res)
+      // console.log(res)
       this.listPatients = res;
     })
   }
