@@ -28,8 +28,5 @@ import {MatMenuModule} from '@angular/material/menu';
 })
 export class AppComponent {
   title = 'LABMedical';
-  collapsed = signal(false);
-
-  sidenavWidth = computed(() => this.collapsed() ? '65px' : '250px')
 }
 

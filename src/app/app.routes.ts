@@ -3,6 +3,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MedicalHistorysComponent } from './pages/medical-historys/medical-historys.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { LayoutComponent } from './pages/layout/layout.component';
+import { authGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
     {
@@ -19,23 +21,24 @@ export const routes: Routes = [
         component: RegisterComponent
     },
     {
-        path: 'dashboard',
-        component: DashboardComponent
+        path: '',
+        component: LayoutComponent,
+        children: [
+            {
+                path: 'dashboard',
+                component: DashboardComponent,
+                canActivate: [authGuard],
+            },
+            {
+                path: 'prontuarios',
+                component: MedicalHistorysComponent,
+                canActivate: [authGuard],
+            }
+        ]
     },
-    { 
-        path: 'prontuarios',
-        component: MedicalHistorysComponent 
-    },
-    // { 
-    //     path: 'novopaciente',
-    //     component: NewPatientComponent 
-    // },
-    // { 
-    //     path: 'novaconsulta',
-    //     component: NewAppointmentComponent 
-    // },
-    // { 
-    //     path: 'novoexame',
-    //     component: NewExaminationComponent 
-    // },
+    {
+        path: '**',
+        component: LoginComponent
+    }
+
 ];
