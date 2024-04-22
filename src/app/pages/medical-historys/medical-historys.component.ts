@@ -94,7 +94,7 @@ export class MedicalHistorysComponent {
   }
 
 
-  // Modal Add Patient
+  // Abrir Modal Add Patient
   openModalAddPatient() {
     this.dialog.open(ModalFormPatientComponent, {
       width: '950px',
@@ -102,7 +102,7 @@ export class MedicalHistorysComponent {
     }).afterClosed().subscribe(() => this.getListPatients());
   }
 
-  // Modal View Patient
+  // Abrir Modal View Patient
   openModalViewPatient(patient: Patient) {
     this.dialog.open(ModalViewPatientComponent, {
       width: '700px',
@@ -111,7 +111,7 @@ export class MedicalHistorysComponent {
     })
   }
 
-  //Modal Edit Patient
+  //Abrir Modal Edit Patient
   openModalEditPatient(patient: Patient) {
     this.dialog.open(ModalFormPatientComponent, {
       width: '950px',

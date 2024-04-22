@@ -5,6 +5,7 @@ import { MedicalHistorysComponent } from './pages/medical-historys/medical-histo
 import { RegisterComponent } from './pages/register/register.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { authGuard } from './guard/auth.guard';
+import { NewPatientComponent } from './pages/new-patient/new-patient.component';
 
 export const routes: Routes = [
     {
@@ -32,6 +33,11 @@ export const routes: Routes = [
             {
                 path: 'prontuarios',
                 component: MedicalHistorysComponent,
+                canActivate: [authGuard],
+            },
+            {
+                path:'novopaciente',
+                component: NewPatientComponent,
                 canActivate: [authGuard],
             }
         ]

@@ -6,7 +6,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);  
 
   const logged = sessionStorage.getItem('userLogged');
-  debugger
   if (logged != null) {
     return true;
   } else {
