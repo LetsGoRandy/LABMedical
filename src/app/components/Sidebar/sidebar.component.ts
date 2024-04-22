@@ -36,9 +36,21 @@ export type logoutItem = {
   ]
 })
 export class sidebarComponent {
+  Userlogged: any;
+
+  ngOnInit() {
+    // Chama LOCALSTORAGE
+    const usuariosCadastradosJSON = localStorage.getItem('usuariosCadastrados');
+    if (usuariosCadastradosJSON) {
+      const usuariosCadastrados = JSON.parse(usuariosCadastradosJSON);
+      if (usuariosCadastrados.auth === 'logged') {
+        this.Userlogged = usuariosCadastrados;
+      }
+    }
+  }
 
   sideNavCollapsed = signal(false)
-  @Input() set collapsed(val: boolean){
+  @Input() set collapsed(val: boolean) {
     this.sideNavCollapsed.set(val)
   };
 
@@ -78,11 +90,23 @@ export class sidebarComponent {
     {
       icon: 'logout',
       label: 'Sair',
-      route: 'login'
+      route: ''
     },
   ])
+  profilePicSize = computed(() => this.sideNavCollapsed() ? '32' : '100')
 
 
+  submitLogout() {
+    const userlogged = this.Userlogged;
 
-  profilePicSize = computed(()=> this.sideNavCollapsed() ? '32' : '100')
+    if (userlogged.auth === "logged") {
+      userlogged.auth = '';
+      localStorage.setItem('usuariosCadastrados', JSON.stringify(userlogged));
+      alert("Usuário deslogado com sucesso!");
+    } else {
+      alert("Nenhum usuário logado encontrado.");
+    }
+  }
+
+
 }

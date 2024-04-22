@@ -3,12 +3,13 @@
     >close</mat-icon
   >
 
-  <h1 class="title">Pacientes</h1>
+  <h1 class="title" *ngIf="editTitle">Editar Paciente</h1>
+  <h1 class="title" *ngIf="!editTitle">Cadastrar Paciente</h1>
   <h2 class="subtitle">Preencha todos os campos com *.</h2>
 
   <form class="row" [formGroup]="formPatient">    
     <div class="col-12">
-        <button class="btn btn-primary btn-lg float-end" [disabled]="!formPatient.valid" (click)="addPatient()" >Cadastrar</button>
+        <button class="btn btn-primary btn-lg float-end" [disabled]="!formPatient.valid" (click)="addPatient()" >Salvar</button>
     </div>
     
     <h3 class="col-12 title">Dados pessoais</h3>    
@@ -43,8 +44,8 @@
       <mat-form-field class="w-100">
         <mat-label>Gênero</mat-label>
         <mat-select formControlName="gender">
-          <mat-option value="one">Masculino</mat-option>
-          <mat-option value="two">Feminino</mat-option>
+          <mat-option value="Masculino">Masculino</mat-option>
+          <mat-option value="Feminino">Feminino</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -53,11 +54,11 @@
       <mat-form-field class="w-100">
         <mat-label>Estado Civil</mat-label>
         <mat-select formControlName="maritalStatus">
-          <mat-option value="one">Solteiro</mat-option>
-          <mat-option value="two">Casado</mat-option>
-          <mat-option value="Three">União Estável</mat-option>
-          <mat-option value="four">Divorciado (a)</mat-option>
-          <mat-option value="five">Viúvo (a)</mat-option>
+          <mat-option value="Solteiro">Solteiro</mat-option>
+          <mat-option value="Casado">Casado</mat-option>
+          <mat-option value="União Estável">União Estável</mat-option>
+          <mat-option value="Divorciado (a)">Divorciado (a)</mat-option>
+          <mat-option value="Viúvo (a)">Viúvo (a)</mat-option>
         </mat-select>
       </mat-form-field>
     </div>

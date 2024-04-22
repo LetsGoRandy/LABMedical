@@ -3,16 +3,20 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { Patient } from '../../interfaces/patient';
 import { MatInputModule } from '@angular/material/input';
+import { AgePipe } from "../../age.pipe";
+import { IsoDateToDateFormatPipe } from "../../format-date.pipe";
 
 @Component({
-  selector: 'app-modal-view-patient',
-  standalone: true,
-  imports: [
-    MatIconModule,
-    MatInputModule,
-  ],
-  templateUrl: './modal-view-patient.component.html',
-  styleUrl: './modal-view-patient.component.scss'
+    selector: 'app-modal-view-patient',
+    standalone: true,
+    templateUrl: './modal-view-patient.component.html',
+    styleUrl: './modal-view-patient.component.scss',
+    imports: [
+        MatIconModule,
+        MatInputModule,
+        AgePipe,
+        IsoDateToDateFormatPipe
+    ]
 })
 export class ModalViewPatientComponent {
 

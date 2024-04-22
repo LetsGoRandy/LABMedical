@@ -14,30 +14,34 @@ import { Patient } from '../../interfaces/patient';
 import { ToolbarComponent } from '../../components/toolbar/toolbar.component';
 import { PatientsService } from '../../services/patients.service';
 import { ModalViewPatientComponent } from '../../components/modal-view-patient/modal-view-patient.component';
+import { IsoDateToDateFormatPipe } from "../../format-date.pipe";
+import { AgePipe } from "../../age.pipe";
 
 @Component({
-  selector: 'app-medical-historys',
-  standalone: true,
-  imports: [
-    HttpClientModule,
-    // Components
-    sidebarComponent,
-    ToolbarComponent,
-    ModalViewPatientComponent,
-    // Angular Material
-    MatIconModule,
-    MatButtonModule,
-    MatTableModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatPaginatorModule,
-    MatPaginator,
-    MatSortModule,
-    MatSort,
-    MatDialogModule,
-  ],
-  templateUrl: './medical-historys.component.html',
-  styleUrl: './medical-historys.component.scss'
+    selector: 'app-medical-historys',
+    standalone: true,
+    templateUrl: './medical-historys.component.html',
+    styleUrl: './medical-historys.component.scss',
+    imports: [
+        HttpClientModule,
+        // Components
+        sidebarComponent,
+        ToolbarComponent,
+        ModalViewPatientComponent,
+        // Angular Material
+        MatIconModule,
+        MatButtonModule,
+        MatTableModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatPaginatorModule,
+        MatPaginator,
+        MatSortModule,
+        MatSort,
+        MatDialogModule,
+        IsoDateToDateFormatPipe,
+        AgePipe
+    ]
 })
 export class MedicalHistorysComponent {
 
@@ -98,6 +102,32 @@ export class MedicalHistorysComponent {
     }).afterClosed().subscribe(() => this.getListPatients());
   }
 
+  // Modal View Patient
+  openModalViewPatient(patient: Patient) {
+    this.dialog.open(ModalViewPatientComponent, {
+      width: '700px',
+      height: '800px',
+      data: patient,
+    })
+  }
 
+  //Modal Edit Patient
+  openModalEditPatient(patient: Patient){
+    this.dialog.open(ModalFormPatientComponent, {
+      width: '950px',
+      height: '950px',
+      data: patient,
+    }).afterClosed().subscribe(() => this.getListPatients());
+  }
+
+  // Delete Patient
+  deletePatient(id: string) {
+    this.patientsService.deletePatient(id).subscribe(
+      (response:any) => {
+        alert('Usuário excluído com Sucesso!');
+        this.getListPatients();
+      } 
+    );
+  }
 
 }

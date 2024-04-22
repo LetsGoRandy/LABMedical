@@ -50,7 +50,7 @@
       [activated]="rla.isActive"
     >
       <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
-      <span matListItemTitle *ngIf="!sideNavCollapsed()">{{ item.label }}</span>
+      <span matListItemTitle *ngIf="!sideNavCollapsed()" (click)="submitLogout()" >{{ item.label }}</span>
     </a>
   </mat-nav-list>
 

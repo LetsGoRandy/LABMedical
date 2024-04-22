@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
@@ -8,14 +8,15 @@ import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import moment from 'moment';
 
-import { DateFnsModule,  DateFnsAdapter} from "@angular/material-date-fns-adapter";
+import { DateFnsModule, DateFnsAdapter } from "@angular/material-date-fns-adapter";
 import { ptBR } from "date-fns/locale";
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { CommonModule } from '@angular/common';
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -34,6 +35,7 @@ const MY_DATE_FORMAT = {
   selector: 'app-modal-form-patient',
   standalone: true,
   imports: [
+    CommonModule,
     ReactiveFormsModule,
     MatIcon,
     MatInputModule,
@@ -57,16 +59,22 @@ const MY_DATE_FORMAT = {
 export class ModalFormPatientComponent {
 
   formPatient: FormGroup;
+  editTitle: boolean = false;
 
   constructor(
     private formbuilder: FormBuilder,
     private patientService: PatientsService,
     public dialogref: MatDialogRef<ModalFormPatientComponent>,
-    private dateAdapter: DateAdapter<Date>
+    private dateAdapter: DateAdapter<Date>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) { this.dateAdapter.setLocale('pt-BR') }
 
   ngOnInit() {
     this.buildForm();
+    // Altera titulo do Modal
+    if(this.data && this.data.fullName){
+      this.editTitle = true;
+    }
   }
 
   buildForm() {
@@ -74,12 +82,12 @@ export class ModalFormPatientComponent {
       fullName: [null, [Validators.required, Validators.minLength(3)]],
       gender: [null, Validators.required],
       dateOfBirth: [moment(), Validators.required],
-      cpf: [null, [Validators.required, Validators.minLength(11)] ],
-      rg: [null, [Validators.required, Validators.minLength(5)] ],
+      cpf: [null, [Validators.required, Validators.minLength(11)]],
+      rg: [null, [Validators.required, Validators.minLength(5)]],
       maritalStatus: [null, Validators.required],
       phoneNumber: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      countryOfBirth: [null, [Validators.required, Validators.minLength(2)] ],
+      countryOfBirth: [null, [Validators.required, Validators.minLength(2)]],
       healthPlanName: [''],
       healthPlanNumber: [''],
       healthPlanVal: [moment()],
@@ -92,6 +100,36 @@ export class ModalFormPatientComponent {
       addressComplement: [''],
       referencePoint: [''],
     })
+
+    if (this.data && this.data.fullName) {
+      this.fillForm()
+    }
+  }
+
+  // Preenche formulário para editar
+  fillForm() {
+    this.formPatient.patchValue({
+      fullName: this.data.fullName,
+      dateOfBirth: this.data.dateOfBirth,
+      gender: this.data.gender,
+      maritalStatus: this.data.maritalStatus,
+      countryOfBirth: this.data.countryOfBirth,
+      cpf: this.data.cpf,
+      rg: this.data.rg,
+      phoneNumber: this.data.phoneNumber,
+      email: this.data.email,
+      healthPlanName: this.data.healthPlanName,
+      healthPlanNumber: this.data.healthPlanNumber,
+      healthPlanVal: this.data.healthPlanVal,
+      streetName: this.data.streetName,
+      streetNumber: this.data.streetNumber,
+      cep: this.data.cep,
+      district: this.data.district,
+      city: this.data.city,
+      state: this.data.state,
+      addressComplement: this.data.addressComplement,
+      referencePoint: this.data.referencePoint,
+    })
   }
 
   closeModal() {
@@ -100,15 +138,33 @@ export class ModalFormPatientComponent {
 
   addPatient() {
     const formPatientObj: Patient = this.formPatient.getRawValue();
+    // Edita Paciente
+    if (this.data && this.data.fullName) {
+      this.patientService.updatePatient(this.data.id, formPatientObj).subscribe(
+        (response: any) => {
+          alert('Usuário Editado com sucesso!');
+          this.closeModal();
+        }, (error: any) => {
+          alert('Houve um erro ao salvar o paciente')
+          console.error(error)
+        })
+    } else {
+      // Salva Paciente
+      this.patientService.setPatient(formPatientObj).subscribe(
+        (response: any) => {
+          alert('Usuário cadastrado com sucesso!');
+          this.closeModal();
+        }, (error: any) => {
+          alert('Houve um erro ao salvar o paciente')
+          console.error(error)
+        })
+    }
 
-    this.patientService.setPatient(formPatientObj).subscribe(
-      (response: any) => {
-        alert('Usuário cadastrado com sucesso!');
-        this.closeModal();
-      }, (error: any) => {
-        alert('Houve um erro ao salvar o paciente')
-        console.error(error)
-      })
+
+
+  }
+
+  editPatient() {
 
   }
 
