@@ -1,0 +1,95 @@
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { DateFnsModule } from '@angular/material-date-fns-adapter';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { Patient } from '../../interfaces/patient';
+import { PatientsService } from '../../services/patients.service';
+import { Observable, map, startWith } from 'rxjs';
+
+
+const MY_DATE_FORMAT = {
+  parse: {
+    dateInput: 'DD/MM/YYYY', // this is how your date will be parsed from Input
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY', // this is how your date will get displayed on the Input
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
+
+@Component({
+  selector: 'app-new-appointment',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatIcon,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    DateFnsModule,
+    MatAutocompleteModule
+  ],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMAT },
+  ],
+  templateUrl: './new-appointment.component.html',
+  styleUrl: './new-appointment.component.scss'
+})
+export class NewAppointmentComponent {
+  formAppointment: FormGroup;
+  listPatients!: Patient[];
+  
+
+  constructor(
+    private formbuild: FormBuilder,
+    private patientsService: PatientsService,
+  ) { }
+
+  ngOnInit() {
+    this.buildForm();
+
+    this.patientsService.getPatient().subscribe(res => {
+      this.listPatients = res;
+    })
+
+    
+
+  }
+
+  buildForm() {
+    this.formAppointment = this.formbuild.group({
+      reason: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(64)]],
+      date: [null, Validators.required],
+      time: [null, Validators.required],
+      description: [null, [Validators.minLength(16), Validators.maxLength(1024)]],
+      medication: [null],
+      precautions: [null, [Validators.required, Validators.minLength(16), Validators.maxLength(256)]]
+    })
+  }
+
+ 
+
+  addAppointment() {
+
+  }
+  
+
+}

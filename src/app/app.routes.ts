@@ -6,6 +6,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { authGuard } from './guard/auth.guard';
 import { NewPatientComponent } from './pages/new-patient/new-patient.component';
+import { NewAppointmentComponent } from './pages/new-appointment/new-appointment.component';
 
 export const routes: Routes = [
     {
@@ -38,6 +39,11 @@ export const routes: Routes = [
             {
                 path:'novopaciente',
                 component: NewPatientComponent,
+                canActivate: [authGuard],
+            },
+            {
+                path:'novaconsulta',
+                component: NewAppointmentComponent,
                 canActivate: [authGuard],
             }
         ]

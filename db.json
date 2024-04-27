@@ -1,10 +1,12 @@
 {
-  "users": [
+  "examinations": [
     {
-      "id": "b4b0",
-      "name": "randy",
-      "email": "randy@gmail.com",
-      "password": "123"
+
+    }
+  ],
+  "appointments": [
+    {
+      
     }
   ],
   "patients": [

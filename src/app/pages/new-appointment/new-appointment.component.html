@@ -1,0 +1,134 @@
+<div class="container-fluid p-3">
+  <div class="col-6">
+    <h1 class="title-page">Nova Consulta</h1>
+    <h2 class="subtitle">Preencha todos os campos com *.</h2>
+  </div>
+
+  <h3 class="col-12 title-form">Buscar Paciente:</h3>
+
+  <form>
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome do Paciente</mat-label>
+      <input
+        matInput        
+        placeholder="Ex. Carlos"
+        #input
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete autoActiveFirstOption="" #auto>
+        <mat-option *ngFor="let Patient of listPatients" [value]="Patient.fullName">{{Patient.fullName}}</mat-option>        
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+  <hr class="hr" />
+
+  <form class="row" [formGroup]="formAppointment">
+    <div class="col-12">
+      <button
+        class="btn btn-primary btn-lg float-end"
+        [disabled]="!formAppointment.valid"
+        (click)="addAppointment()"
+      >
+        Salvar
+      </button>
+    </div>
+
+    <h3 class="col-12 title-form">Dados da Consulta:</h3>
+
+    <div class="col-12 col-md-6 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Motivo da Consulta</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="reason"
+          placeholder="Dor nas costas"
+        />
+        @if (formAppointment.controls['reason'].invalid) {<mat-error
+          >Digite o nome completo</mat-error
+        >}
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-3 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Data da Consulta</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="date" />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-3 mb-2">
+      <mat-form-field class="w-100">
+        <mat-label>Hora da Consulta</mat-label>
+        <input
+          type="time"
+          matInput
+          [matDatepicker]="picker2"
+          formControlName="time"
+          #time
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 mb-2">
+      <mat-form-field class="example-full-width height-200">
+        <mat-label>Descrição</mat-label>
+        <textarea
+          matInput
+          #message
+          formControlName="description"
+          minlength="16"
+          maxlength="1024"
+          placeholder="Ex. Dor na lombar..."
+        ></textarea>
+        @if (formAppointment.controls['description'].invalid) {<mat-error
+          >Digite no mínimo 16 caracteres</mat-error
+        >}
+        <mat-hint align="start">Mínimo 16 caracteres</mat-hint>
+        <mat-hint align="end">{{ message.value.length }} / 1024</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 mb-2">
+      <mat-form-field class="example-full-width height-130">
+        <mat-label>Medicação</mat-label>
+        <textarea
+          matInput
+          #message
+          formControlName="medication"
+          placeholder="Ex. Paracetamol..."
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 mb-2">
+      <mat-form-field class="example-full-width height-130">
+        <mat-label>Dosagem e Precauções</mat-label>
+        <textarea
+          matInput
+          #message
+          formControlName="precautions"
+          minlength="16"
+          maxlength="256"
+          placeholder="Ex. Tomar 1 comprimido a cada 6 horas!"
+        ></textarea>
+        @if (formAppointment.controls['precautions'].invalid) {<mat-error
+          >Digite no mínimo 16 caracteres</mat-error
+        >}
+        <mat-hint align="start">Mínimo 16 caracteres</mat-hint>
+        <mat-hint align="end">{{ message.value.length }} / 256</mat-hint>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
