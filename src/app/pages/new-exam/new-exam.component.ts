@@ -1,23 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DateFnsModule } from '@angular/material-date-fns-adapter';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { Patient } from '../../interfaces/patient';
-import { PatientsService } from '../../services/patients.service';
-import { Observable, map, startWith } from 'rxjs';
-import { Appointment } from '../../interfaces/appointment';
-import { AppointmentsService } from '../../services/appointments.service';
 import { Router } from '@angular/router';
-import { MatTableDataSource } from '@angular/material/table';
+import { PatientsService } from '../../services/patients.service';
+import { ExamsService } from '../../services/exams.service';
+import { Exame } from '../../interfaces/exame';
 import moment from 'moment';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 
 const MY_DATE_FORMAT = {
@@ -33,7 +32,7 @@ const MY_DATE_FORMAT = {
 };
 
 @Component({
-  selector: 'app-new-appointment',
+  selector: 'app-new-exam',
   standalone: true,
   imports: [
     CommonModule,
@@ -45,7 +44,8 @@ const MY_DATE_FORMAT = {
     MatDatepickerModule,
     MatNativeDateModule,
     DateFnsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgxMaterialTimepickerModule,    
   ],
   providers: [
     {
@@ -55,11 +55,12 @@ const MY_DATE_FORMAT = {
     },
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMAT },
   ],
-  templateUrl: './new-appointment.component.html',
-  styleUrl: './new-appointment.component.scss'
+  templateUrl: './new-exam.component.html',
+  styleUrl: './new-exam.component.scss'
 })
-export class NewAppointmentComponent {
-  formAppointment: FormGroup;
+
+export class NewExamComponent {
+  formExamination: FormGroup;
   listPatients!: Patient[];
 
 
@@ -67,7 +68,7 @@ export class NewAppointmentComponent {
     private formbuild: FormBuilder,
     private router: Router,
     private patientsService: PatientsService,
-    private appointmentService: AppointmentsService,
+    private examsService: ExamsService,
   ) {
     this.patientsService.getPatient().subscribe(res => {
       this.listPatients = res;
@@ -79,14 +80,15 @@ export class NewAppointmentComponent {
   }
 
   buildForm() {
-    this.formAppointment = this.formbuild.group({
+    this.formExamination = this.formbuild.group({
       patientName: [null, Validators.required],
-      reason: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(64)]],
+      examName: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(64)]],
       date: [moment(), Validators.required],
-      time: [moment(), Validators.required],
-      description: [null, [Validators.minLength(16), Validators.maxLength(1024)]],
-      medication: [null, Validators.maxLength(256)],
-      precaution: [null, [Validators.required, Validators.minLength(16), Validators.maxLength(256)]]
+      time: [moment().format('LTS'), Validators.required],
+      examType: [null, [Validators.minLength(4), Validators.maxLength(32)]],
+      laboratory: [null, Validators.maxLength(256)],
+      examUrl: [null],
+      examResult: [null, [Validators.required, Validators.minLength(16), Validators.maxLength(256)]],
     })
   }
 
@@ -99,14 +101,14 @@ export class NewAppointmentComponent {
     })
   }
 
-  addAppointment() {
-    const formAppointmentObj: Appointment = this.formAppointment.getRawValue();
-    this.appointmentService.setAppointment(formAppointmentObj).subscribe(
+  addExamination() {
+    const formExamsObj: Exame = this.formExamination.getRawValue();
+    this.examsService.setExams(formExamsObj).subscribe(
       (response: any) => {
-        alert('Consulta realizada com sucesso!');
+        alert('Exame agendado com sucesso!');
         this.router.navigate(['prontuarios'])
       }, (error: any) => {
-        alert('Houve um erro ao salvar o paciente')
+        alert('Houve um erro ao salvar o exame')
         console.error(error)
       })
   }

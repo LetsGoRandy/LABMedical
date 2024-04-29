@@ -9,6 +9,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CardPatientsComponent } from '../../components/card-patients/card-patients.component';
 import { Patient } from '../../interfaces/patient';
 import { PatientsService } from "../../../app/services/patients.service";
+import { AppointmentsService } from '../../services/appointments.service';
+import { ExamsService } from '../../services/exams.service';
+import { Appointment } from '../../interfaces/appointment';
+import { Exame } from '../../interfaces/exame';
 
 
 @Component({
@@ -27,20 +31,33 @@ import { PatientsService } from "../../../app/services/patients.service";
 })
 export class DashboardComponent {
   
-  titlePage: string = 'Informarções e Estatísticas'    
-  numberAppointment: string = '8'
-  numberExamination: string = '5'
-  listPatients: Patient[] = []
+  titlePage: string = 'Informarções e Estatísticas'  
+  listPatients: Patient[] = [];
+  listAppointments: Appointment[] = [];
+  listExams: Exame[] = [];
   userLogged: any;
   
 
-  constructor(private patientsService:PatientsService){ }
+  constructor(
+    private patientsService:PatientsService,
+    private appointmentService: AppointmentsService,
+    private examsService: ExamsService
+  ){ }
 
   ngOnInit(): void{
 
     // Chama JSON SERVER
+    // Pacientes
     this.patientsService.getAllpatients().subscribe((res)=>{
       this.listPatients = res;
+    })
+    // Consultas
+    this.appointmentService.getAllAppointments().subscribe((res)=>{
+      this.listAppointments = res;
+    })
+    // Exames
+    this.examsService.getAllExams().subscribe((res)=>{
+      this.listExams = res;
     })
 
     // Chama LOCALSTORAGE
