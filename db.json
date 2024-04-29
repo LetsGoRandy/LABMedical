@@ -1,12 +1,32 @@
 {
   "examinations": [
     {
-
+      "id": "5132"
     }
   ],
   "appointments": [
     {
-      
+      "id": "30a7"
+    },
+    {
+      "id": "e0cc",
+      "patientName": "Randy Gomes Cavalcante",
+      "reason": "Dor nas costas",
+      "date": "2024-04-01T03:00:00.000Z",
+      "time": "2024-04-29T03:00:00.000Z",
+      "description": "paciente está com dor nas costas",
+      "medication": "paracetamol",
+      "precaution": "deve tomar 4x ao dia"
+    },
+    {
+      "id": "6e7f",
+      "patientName": "teste",
+      "reason": "testando",
+      "date": "2024-04-29T03:00:00.000Z",
+      "time": "2024-04-29T03:00:00.000Z",
+      "description": "testando testando",
+      "medication": "testando testando",
+      "precaution": "testando testando"
     }
   ],
   "patients": [
@@ -239,6 +259,29 @@
       "state": "teste",
       "addressComplement": "",
       "referencePoint": ""
+    },
+    {
+      "id": "74ee",
+      "fullName": "teste",
+      "gender": "Masculino",
+      "dateOfBirth": "2024-04-29T03:50:01.656Z",
+      "cpf": 11111111111,
+      "rg": 1111111111,
+      "maritalStatus": "Solteiro",
+      "phoneNumber": "11122123465",
+      "email": "teste@teste.com",
+      "countryOfBirth": "brasileiro",
+      "healthPlanName": "teste",
+      "healthPlanNumber": "teste",
+      "healthPlanVal": "2024-04-29T03:50:01.656Z",
+      "cep": 88119350,
+      "streetName": "teste",
+      "streetNumber": 123,
+      "district": "teste",
+      "city": "teste",
+      "state": "teste",
+      "addressComplement": "teste",
+      "referencePoint": "teste"
     }
   ]
 }

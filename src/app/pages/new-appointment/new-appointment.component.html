@@ -4,25 +4,6 @@
     <h2 class="subtitle">Preencha todos os campos com *.</h2>
   </div>
 
-  <h3 class="col-12 title-form">Buscar Paciente:</h3>
-
-  <form>
-    <mat-form-field class="example-full-width">
-      <mat-label>Nome do Paciente</mat-label>
-      <input
-        matInput        
-        placeholder="Ex. Carlos"
-        #input
-        [matAutocomplete]="auto"
-      />
-      <mat-autocomplete autoActiveFirstOption="" #auto>
-        <mat-option *ngFor="let Patient of listPatients" [value]="Patient.fullName">{{Patient.fullName}}</mat-option>        
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
-
-  <hr class="hr" />
-
   <form class="row" [formGroup]="formAppointment">
     <div class="col-12">
       <button
@@ -33,7 +14,28 @@
         Salvar
       </button>
     </div>
+    <h3 class="col-12 title-form">Buscar Paciente:</h3>
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome do Paciente</mat-label>
+      <input
+        matInput
+        placeholder="Ex. Carlos"
+        #input
+        (keyup)="applyFilter($event)"
+        [matAutocomplete]="auto"
+        formControlName="patientName"
+      />
+      <mat-autocomplete autoActiveFirstOption="" #auto>
+        <mat-option
+          *ngFor="let Patient of listPatients"
+          [value]="Patient.fullName"
+        >
+        {{ Patient.fullName }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
 
+    <hr class="hr" />
     <h3 class="col-12 title-form">Dados da Consulta:</h3>
 
     <div class="col-12 col-md-6 mb-2">
@@ -42,12 +44,15 @@
         <input
           type="text"
           matInput
+          #reason
           formControlName="reason"
           placeholder="Dor nas costas"
         />
         @if (formAppointment.controls['reason'].invalid) {<mat-error
-          >Digite o nome completo</mat-error
+          >Mínimo 8 caracteres</mat-error
         >}
+        <mat-hint align="start">Mínimo 8 caracteres</mat-hint>
+        <mat-hint align="end">{{ reason.value.length }} / 64</mat-hint>
       </mat-form-field>
     </div>
 
@@ -86,7 +91,7 @@
         <mat-label>Descrição</mat-label>
         <textarea
           matInput
-          #message
+          #description
           formControlName="description"
           minlength="16"
           maxlength="1024"
@@ -96,7 +101,7 @@
           >Digite no mínimo 16 caracteres</mat-error
         >}
         <mat-hint align="start">Mínimo 16 caracteres</mat-hint>
-        <mat-hint align="end">{{ message.value.length }} / 1024</mat-hint>
+        <mat-hint align="end">{{ description.value.length }} / 1024</mat-hint>
       </mat-form-field>
     </div>
 
@@ -105,10 +110,11 @@
         <mat-label>Medicação</mat-label>
         <textarea
           matInput
-          #message
+          #medication
           formControlName="medication"
           placeholder="Ex. Paracetamol..."
         ></textarea>
+        <mat-hint align="end">{{ medication.value.length }} / 256</mat-hint>
       </mat-form-field>
     </div>
 
@@ -117,17 +123,17 @@
         <mat-label>Dosagem e Precauções</mat-label>
         <textarea
           matInput
-          #message
-          formControlName="precautions"
+          #precaution
+          formControlName="precaution"
           minlength="16"
           maxlength="256"
           placeholder="Ex. Tomar 1 comprimido a cada 6 horas!"
         ></textarea>
-        @if (formAppointment.controls['precautions'].invalid) {<mat-error
+        @if (formAppointment.controls['precaution'].invalid) {<mat-error
           >Digite no mínimo 16 caracteres</mat-error
         >}
         <mat-hint align="start">Mínimo 16 caracteres</mat-hint>
-        <mat-hint align="end">{{ message.value.length }} / 256</mat-hint>
+        <mat-hint align="end">{{ precaution.value.length }} / 256</mat-hint>
       </mat-form-field>
     </div>
   </form>

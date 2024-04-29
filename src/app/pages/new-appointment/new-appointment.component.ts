@@ -9,10 +9,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { Patient } from '../../interfaces/patient';
 import { PatientsService } from '../../services/patients.service';
 import { Observable, map, startWith } from 'rxjs';
+import { Appointment } from '../../interfaces/appointment';
+import { AppointmentsService } from '../../services/appointments.service';
+import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 const MY_DATE_FORMAT = {
@@ -56,40 +60,54 @@ const MY_DATE_FORMAT = {
 export class NewAppointmentComponent {
   formAppointment: FormGroup;
   listPatients!: Patient[];
-  
+
 
   constructor(
     private formbuild: FormBuilder,
+    private router: Router,
     private patientsService: PatientsService,
-  ) { }
-
-  ngOnInit() {
-    this.buildForm();
-
+    private appointmentService: AppointmentsService,
+  ) {
     this.patientsService.getPatient().subscribe(res => {
       this.listPatients = res;
     })
+  }
 
-    
-
+  ngOnInit() {
+    this.buildForm();
   }
 
   buildForm() {
     this.formAppointment = this.formbuild.group({
+      patientName: [null, Validators.required],
       reason: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(64)]],
       date: [null, Validators.required],
       time: [null, Validators.required],
       description: [null, [Validators.minLength(16), Validators.maxLength(1024)]],
-      medication: [null],
-      precautions: [null, [Validators.required, Validators.minLength(16), Validators.maxLength(256)]]
+      medication: [null, Validators.maxLength(256)],
+      precaution: [null, [Validators.required, Validators.minLength(16), Validators.maxLength(256)]]
     })
   }
 
- 
+  applyFilter(event: Event) {
+    const target = event.target as HTMLInputElement
+    const value = target.value
+    
+    this.listPatients = this.listPatients.filter( (patient) => {
+      return patient.fullName.toLocaleLowerCase().includes(value)
+    })
+  }
 
   addAppointment() {
-
+    const formAppointmentObj: Appointment = this.formAppointment.getRawValue();
+    this.appointmentService.setAppointment(formAppointmentObj).subscribe(
+      (response: any) => {
+        alert('Consulta realizada com sucesso!');
+        this.router.navigate(['prontuarios'])
+      }, (error: any) => {
+        alert('Houve um erro ao salvar o paciente')
+        console.error(error)
+      })
   }
-  
 
 }
